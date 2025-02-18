@@ -1,0 +1,1 @@
+This repo is for a barebones website that can be used to test embeddable elements/components. It will be hosted from the repo (branch:main) and will be a static site. 
