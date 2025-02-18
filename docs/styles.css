@@ -15,4 +15,16 @@ h1 {
 p {
     padding: 10px;
     text-align: center;
+}
+
+#embed-container {
+    width: 600px;
+    height: 400px;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 16px;
+    text-align: center;
 } 
