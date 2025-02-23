@@ -30,6 +30,7 @@ body {
     background-attachment: fixed;
     color: var(--text-color);
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -326,10 +327,71 @@ h1 {
 
 /* Manual dark mode override */
 body.dark-mode {
-    background: #0f172a;
+    background: 
+        radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: #f8fafc;
 }
 
 body.dark-mode header {
-    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    background: linear-gradient(135deg, #1e40af, #1e293b);
+}
+
+body.dark-mode .embed-section {
+    background: rgba(30, 41, 59, 0.85);
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.3),
+        0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode #embed-container {
+    background: rgba(30, 41, 59, 0.5);
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+body.dark-mode #embed-container:hover {
+    border-color: var(--primary-color);
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.3),
+        0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .button {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .button:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .loading {
+    color: #f8fafc;
+}
+
+body.dark-mode .loading::after {
+    border-color: #1e293b;
+    border-top-color: #3b82f6;
+}
+
+body.dark-mode .footer {
+    background: linear-gradient(135deg, #1e40af, #1e293b);
+}
+
+/* Toggle theme button specific styles */
+.toggle-mode-btn {
+    background-color: #475569;
+}
+
+.toggle-mode-btn:hover {
+    background-color: #334155;
+}
+
+body.dark-mode .toggle-mode-btn {
+    background-color: #64748b;
+}
+
+body.dark-mode .toggle-mode-btn:hover {
+    background-color: #94a3b8;
 } 

@@ -51,7 +51,21 @@ function clearEmbed(containerId) {
 // embedElement('map', 'embed-container');
 // embedElement('chart', 'embed-container');
 
-// Add a manual dark mode toggle function
+// Dark mode implementation
 function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-} 
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+}
+
+// Initialize dark mode based on saved preference or system preference
+function initDarkMode() {
+    const savedMode = localStorage.getItem('darkMode');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedMode === 'true' || (savedMode === null && prefersDark)) {
+        document.body.classList.add('dark-mode');
+    }
+}
+
+// Call initDarkMode when the page loads
+document.addEventListener('DOMContentLoaded', initDarkMode); 
