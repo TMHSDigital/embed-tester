@@ -66,11 +66,13 @@ docs/
 
 ## Example Embeds
 
-<!-- Example Embed: Snake Game -->
-<div align="center">
-  <h3>Example Embed: Snake Game</h3>
-  <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg" width="100%" alt="Snake Game Embed">
-</div>
+The embed tester supports various types of embeddable content:
+
+- **Maps**: Google Maps embeds for location visualization
+- **Charts**: MongoDB Charts for data visualization
+- **Videos**: YouTube video embeds
+
+Each embed is sandboxed and responsive, making it perfect for testing how embeds will look in your own projects.
 
 ## Contributing
 
@@ -82,7 +84,7 @@ Contributions are welcome! Feel free to:
 
 ## License
 
-This project is open source and available under the MIT License.
+This project is open source and available under the Apache 2.0 License.
 
 <!-- Animated Divider -->
 <div align="center">
