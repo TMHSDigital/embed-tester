@@ -21,7 +21,7 @@
 
     <main class="container">
         <section class="embed-section">
-            <div id="embed-container">
+            <div id="embed-container" aria-live="polite" role="region">
                 <div>
                     <p>Your embedded element will appear here</p>
                     <p style="font-size: 0.9rem; opacity: 0.7;">Click one of the buttons below to test different embed types</p>
@@ -41,6 +41,7 @@
                 <button class="button clear-btn" onclick="clearEmbed('embed-container')">
                     <i class="fas fa-times"></i> Clear
                 </button>
+                <button class="button toggle-mode-btn" onclick="toggleDarkMode()">Toggle Theme</button>
             </div>
         </section>
     </main>
