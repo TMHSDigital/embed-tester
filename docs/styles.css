@@ -104,4 +104,52 @@ h1 {
     font-size: 0.9rem;
     margin-top: 4rem;
     border-top: 1px solid var(--border-color);
+}
+
+.loading {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    animation: pulse 1.5s infinite;
+}
+
+.error {
+    color: #ef4444;
+    font-size: 1.1rem;
+}
+
+.map-btn { background-color: #22c55e; }
+.map-btn:hover { background-color: #16a34a; }
+
+.chart-btn { background-color: #6366f1; }
+.chart-btn:hover { background-color: #4f46e5; }
+
+.youtube-btn { background-color: #ef4444; }
+.youtube-btn:hover { background-color: #dc2626; }
+
+.clear-btn { 
+    background-color: #64748b;
+    margin-left: 1rem;
+}
+.clear-btn:hover { background-color: #475569; }
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+    .controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .button {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 120px;
+    }
+    
+    .clear-btn {
+        margin-left: 0;
+    }
 } 
