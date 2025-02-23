@@ -14,7 +14,7 @@
     }
     
     .embed-section {
-        background: #1e293b;
+        background: rgba(30,41,59,0.85);
     }
 }
 
@@ -23,7 +23,9 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, #f8fafc, #e2e8ff);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     color: var(--text-color);
 }
 
@@ -63,11 +65,12 @@ h1 {
 }
 
 .embed-section {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
     padding: 2rem;
     margin: 2rem 0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.2);
 }
 
 #embed-container {
@@ -86,6 +89,7 @@ h1 {
     transition: all 0.3s ease;
     background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #embed-container::before {
@@ -103,6 +107,11 @@ h1 {
 
 #embed-container:hover::before {
     opacity: 1;
+}
+
+#embed-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .controls {
@@ -207,6 +216,12 @@ h1 {
 @keyframes slideDown {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @media (max-width: 640px) {
