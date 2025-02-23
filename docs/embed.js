@@ -49,4 +49,9 @@ function clearEmbed(containerId) {
 
 // Example usage:
 // embedElement('map', 'embed-container');
-// embedElement('chart', 'embed-container'); 
+// embedElement('chart', 'embed-container');
+
+// Add a manual dark mode toggle function
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+} 

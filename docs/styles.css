@@ -239,4 +239,20 @@ h1 {
     .clear-btn {
         margin-left: 0;
     }
+}
+
+/* Focus styling for accessibility */
+.button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Manual dark mode override */
+body.dark-mode {
+    background: #0f172a;
+    color: #f8fafc;
+}
+
+body.dark-mode header {
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
 } 
