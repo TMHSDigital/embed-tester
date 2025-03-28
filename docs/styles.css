@@ -69,7 +69,7 @@ header {
 h1 {
     font-size: 2.8rem; /* Slightly larger */
     font-weight: 700; /* Slightly less bold than 800 */
-    margin: 0 0 0.5rem 0; /* Add bottom margin */
+    margin: 0 0 0.75rem 0; /* Increase bottom margin */
     padding: 0;
     text-align: center;
     letter-spacing: -0.03em;
@@ -249,7 +249,7 @@ main.container {
     margin-top: 5rem;
     background-color: rgba(0, 0, 0, 0.02);
     border-top: 1px solid var(--border-color);
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Increase base font size */
     color: #64748b;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
