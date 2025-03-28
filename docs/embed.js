@@ -1,4 +1,11 @@
-// Function to embed an element
+/**
+ * Embeds a predefined element type (map, chart, youtube) into a specified container.
+ * Displays a loading message, creates an iframe, sets the appropriate src and sandbox attributes,
+ * handles errors, and appends the iframe to the container.
+ * 
+ * @param {'map' | 'chart' | 'youtube'} type The type of element to embed.
+ * @param {string} containerId The ID of the HTML element to embed the iframe into.
+ */
 function embedElement(type, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -33,6 +40,11 @@ function embedElement(type, containerId) {
     container.appendChild(element);
 }
 
+/**
+ * Clears the content of the embed container and replaces it with placeholder text.
+ * 
+ * @param {string} containerId The ID of the HTML element to clear.
+ */
 function clearEmbed(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -44,7 +56,13 @@ function clearEmbed(containerId) {
     `;
 }
 
-// Function to embed custom HTML code
+/**
+ * Embeds custom HTML code provided by the user into a sandboxed iframe.
+ * Reads the code from the #custom-embed-code textarea, displays loading/error messages,
+ * creates an iframe, sets its srcdoc and sandbox attributes for security, and appends it.
+ * 
+ * @param {string} containerId The ID of the HTML element to embed the custom code into.
+ */
 function embedCustomCode(containerId) {
     const container = document.getElementById(containerId);
     const codeInput = document.getElementById('custom-embed-code');
@@ -83,13 +101,18 @@ function embedCustomCode(containerId) {
 // embedElement('map', 'embed-container');
 // embedElement('chart', 'embed-container');
 
-// Dark mode implementation
+/**
+ * Toggles the 'dark-mode' class on the body element and saves the preference to localStorage.
+ */
 function toggleDarkMode() {
     const isDark = document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', isDark);
 }
 
-// Initialize dark mode based on saved preference or system preference
+/**
+ * Initializes the dark mode based on localStorage preference or system preference (prefers-color-scheme).
+ * Adds the 'dark-mode' class to the body if applicable.
+ */
 function initDarkMode() {
     const savedMode = localStorage.getItem('darkMode');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
