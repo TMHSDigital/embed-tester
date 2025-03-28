@@ -88,6 +88,25 @@ function embedCustomCode(containerId) {
     });
     const sandboxString = sandboxPermissions.join(' ');
 
+    // Confirmation for dangerous permissions
+    let proceed = true;
+    if (sandboxPermissions.includes('allow-same-origin')) {
+        proceed = window.confirm("⚠️ SECURITY WARNING: You have enabled 'allow-same-origin'.\n\nThis allows the embedded content to potentially access and control this page (read cookies, change content).\n\nOnly proceed if you ABSOLUTELY trust the source of the embed code.\n\nDo you want to continue?");
+    }
+    if (proceed && sandboxPermissions.includes('allow-top-navigation')) {
+        proceed = window.confirm("⚠️ SECURITY WARNING: You have enabled 'allow-top-navigation'.\n\nThis allows the embedded content to redirect this entire page to another website.\n\nOnly proceed if you ABSOLUTELY trust the source of the embed code.\n\nDo you want to continue?");
+    }
+
+    if (!proceed) {
+        container.innerHTML = '<p class="error">Embedding cancelled due to security concerns.</p>';
+         setTimeout(() => {
+            if (container.querySelector('.error')) {
+                 clearEmbed(containerId);
+            }
+        }, 3000);
+        return; // Stop embedding if user cancelled
+    }
+
     container.innerHTML = '<div class="loading">Loading custom embed...</div>';
 
     const element = document.createElement('iframe');
