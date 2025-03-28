@@ -23,7 +23,7 @@ function embedElement(type, containerId) {
             element.setAttribute('sandbox', 'allow-scripts');
             break;
         case 'chart':
-            element.src = 'https://charts.mongodb.com/charts-project-0-qwerty/embed/charts?id=62e9a6c1-ce35-4a97-8a3c-b9bad0e3dd1e&maxDataAge=3600&theme=light&autoRefresh=true';
+            element.src = 'https://plotly.com/~chris/1638.embed';
             element.setAttribute('sandbox', 'allow-scripts allow-popups');
             break;
         case 'youtube':

@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed placeholder GitHub link in the footer of `docs/index.html`.
 - Fixed missing dark mode style overrides after CSS refactoring.
+- Fixed broken MongoDB Charts embed button by replacing with a public Plotly example.
 
 ### Security
 - Hardened iframe sandbox settings for predefined embeds (Map, Chart, YouTube) by removing `allow-same-origin`.
