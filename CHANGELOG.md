@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Style: Added `:focus` and `:active` states to buttons for better interactivity and accessibility.
 
 ### Changed
+- Style: Revamped header/hero section with animated gradient and updated typography.
 - Style: Improve overall typography, spacing, and visual hierarchy.
 - Style: Restructure and visually enhance the Sandbox Permissions section for clarity.
 - Design: Redesigned footer with improved links (Repo, Issues, License, LinkedIn, Instagram) and styling.
