@@ -98,6 +98,17 @@ function embedCustomCode(containerId) {
     }, 50); // Small delay
 }
 
+/**
+ * Resizes the embed container to the specified width.
+ * 
+ * @param {string} width The target width (e.g., '375px', '100%', ''). An empty string resets to default.
+ */
+function resizeEmbedContainer(width) {
+    const container = document.getElementById('embed-container');
+    if (!container) return;
+    container.style.width = width;
+}
+
 // Example usage:
 // embedElement('map', 'embed-container');
 // embedElement('chart', 'embed-container');
@@ -137,4 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.toggle-mode-btn')?.addEventListener('click', toggleDarkMode);
     // Add listener for the new custom embed button
     document.querySelector('.custom-embed-btn')?.addEventListener('click', () => embedCustomCode(containerId));
+
+    // Resize buttons
+    document.querySelectorAll('.resize-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const newWidth = button.dataset.width;
+            resizeEmbedContainer(newWidth);
+        });
+    });
 }); 

@@ -110,7 +110,6 @@ h1 {
 
 #embed-container {
     width: 100%;
-    max-width: 800px;
     height: 450px;
     margin: 2rem auto;
     border: 1px solid var(--border-color);
@@ -125,10 +124,11 @@ h1 {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     position: relative;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, width 0.4s ease-in-out, height 0.4s ease-in-out;
     box-shadow: 
         0 2px 4px -1px rgba(0, 0, 0, 0.06),
         0 1px 2px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 #embed-container:hover {
@@ -459,4 +459,43 @@ body.dark-mode #custom-embed-code:focus {
     background-color: rgba(30, 41, 59, 0.9);
 }
 
-/* Footer dark mode rules are already present */ 
+/* Footer dark mode rules are already present */
+
+/* Styles for Resize Controls */
+.resize-controls {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1.5rem; 
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.resize-btn {
+    /* Slightly smaller buttons */
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    /* Different color scheme - e.g., secondary/grey */
+    background-color: #64748b; /* Slate-500 */
+    color: white;
+    /* Remove initial brightness filter if applied globally */
+    filter: none;
+}
+
+.resize-btn:hover {
+    background-color: #475569; /* Slate-600 */
+    filter: none; /* Override global hover filter if needed */
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Add specific dark mode for resize buttons if needed */
+body.dark-mode .resize-btn {
+    background-color: #475569; /* Darker base */
+    color: #cbd5e1;
+}
+body.dark-mode .resize-btn:hover {
+    background-color: #52525b; /* Zinc-600 */
+} 
