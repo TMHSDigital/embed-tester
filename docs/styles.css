@@ -22,11 +22,11 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.7;
     background: 
-        radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        linear-gradient(135deg, #f8fafc 0%, #e2e8ff 100%);
+        radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+        #f8fafc;
     background-attachment: fixed;
     color: var(--text-color);
     min-height: 100vh;
@@ -34,16 +34,16 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0 1.5rem;
 }
 
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 2rem 0;
-    margin-bottom: 2rem;
+    padding: 2.5rem 0;
+    margin-bottom: 3rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
@@ -64,35 +64,40 @@ header::before {
 }
 
 h1 {
-    font-size: 2.75rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 800;
     margin: 0;
-    padding: 1rem;
+    padding: 0;
     text-align: center;
-    letter-spacing: -0.025em;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    letter-spacing: -0.03em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .subtitle {
     text-align: center;
     color: rgba(255,255,255,0.9);
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
     font-weight: 500;
 }
 
+main.container {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
 .embed-section {
-    background: rgba(255, 255, 255, 0.85);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    border-radius: 24px;
-    padding: 2.5rem;
-    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    margin: 0;
     box-shadow: 
-        0 8px 32px 0 rgba(31,38,135,0.1),
-        0 1px 2px 0 rgba(31,38,135,0.05);
+        0 6px 20px rgba(60, 70, 120, 0.08),
+        0 1px 2px rgba(60, 70, 120, 0.05);
     position: relative;
     overflow: hidden;
 }
@@ -111,9 +116,9 @@ h1 {
 #embed-container {
     width: 100%;
     height: 450px;
-    margin: 2rem auto;
+    margin: 2.5rem auto;
     border: 1px solid var(--border-color);
-    border-radius: 16px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,14 +148,14 @@ h1 {
     height: 100%;
     border: none;
     border-radius: 8px;
-    display: block; /* Ensures it takes up block space */
+    display: block;
 }
 
 .controls {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin: 2rem 0;
+    margin: 2.5rem 0 2rem 0;
 }
 
 .button {
@@ -235,9 +240,9 @@ h1 {
 }
 
 .footer {
-    padding: 2rem 0; /* Reduced vertical padding */
-    margin-top: 4rem;
-    background-color: rgba(0, 0, 0, 0.02); /* Subtle background */
+    padding: 2.5rem 0;
+    margin-top: 5rem;
+    background-color: rgba(0, 0, 0, 0.02);
     border-top: 1px solid var(--border-color);
     font-size: 0.9rem;
     color: #64748b;
@@ -246,46 +251,45 @@ h1 {
 
 .footer-content {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem; /* Space between text and links */
+    gap: 1rem;
 }
 
 .footer-text {
-    margin: 0; /* Reset default paragraph margin */
+    margin: 0;
 }
 
 .footer-links {
     display: flex;
-    gap: 1.5rem; /* Space between links */
+    gap: 1.5rem;
     align-items: center;
 }
 
 .footer-links a {
-    color: #64748b; /* Match footer text color */
+    color: #64748b;
     text-decoration: none;
     font-weight: 500;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem; /* Space between icon and text */
+    gap: 0.4rem;
     transition: color 0.2s ease;
 }
 
 .footer-links a:hover,
 .footer-links a:focus {
     color: var(--primary-color);
-    text-decoration: none; /* Keep underline off */
+    text-decoration: none;
 }
 
 .footer-links i {
-    font-size: 1.1em; /* Slightly larger icons */
+    font-size: 1.1em;
 }
 
-/* Dark Mode Footer Adjustments */
 body.dark-mode .footer {
     background-color: rgba(255, 255, 255, 0.03);
-    color: #94a3b8; /* Lighter text for dark mode */
+    color: #94a3b8;
 }
 
 body.dark-mode .footer-links a {
@@ -294,7 +298,7 @@ body.dark-mode .footer-links a {
 
 body.dark-mode .footer-links a:hover,
 body.dark-mode .footer-links a:focus {
-    color: #60a5fa; /* Lighter primary color for hover */
+    color: #60a5fa;
 }
 
 @keyframes spin {
@@ -334,11 +338,10 @@ body.dark-mode .footer-links a:focus {
     }
 }
 
-/* Toggle theme button specific styles */
 .toggle-mode-btn { background-color: #f59e0b; }
 
 .custom-embed-area {
-    margin-top: 2.5rem;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -355,7 +358,7 @@ body.dark-mode .footer-links a:focus {
     font-size: 0.95rem;
     background-color: rgba(255, 255, 255, 0.6);
     transition: border-color 0.3s, background-color 0.3s;
-    resize: vertical; /* Allow vertical resizing */
+    resize: vertical;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -366,76 +369,69 @@ body.dark-mode .footer-links a:focus {
 }
 
 .custom-embed-btn {
-    background-color: #10b981; /* Emerald green */
+    background-color: #10b981;
     width: auto;
     padding: 0.75rem 2rem;
 }
 
-/* --- Dark Mode Overrides --- */
-
 body.dark-mode {
-    /* Use variables defined in @media (prefers-color-scheme: dark) */
     background: 
-        radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
-        linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Dark gradient */
-    color: var(--text-color); /* Uses dark text color */
+        radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        #0f172a;
+    color: var(--text-color);
 }
 
 body.dark-mode header {
-    /* Darker header gradient */
-    background: linear-gradient(135deg, #1e40af, #172554); 
+    background: linear-gradient(135deg, #1e40af, #172554);
 }
 
 body.dark-mode .embed-section {
-    background: rgba(30, 41, 59, 0.85); /* From original dark vars */
+    background: rgba(30, 41, 59, 0.85);
     box-shadow: 
         0 8px 32px 0 rgba(0, 0, 0, 0.2),
         0 1px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
 body.dark-mode .embed-section::before {
-    /* Adjust inner gradient for dark */
-     background: linear-gradient(135deg, 
+    background: linear-gradient(135deg, 
         rgba(59,130,246,0.1) 0%,
         rgba(59,130,246,0) 100%
     );
 }
 
 body.dark-mode #embed-container {
-    background: rgba(30, 41, 59, 0.6); /* Darker background */
-    border-color: var(--border-color); /* Uses dark border color */
-    color: #cbd5e1; /* Lighter grey text */
+    background: rgba(30, 41, 59, 0.6);
+    border-color: var(--border-color);
+    color: #cbd5e1;
     box-shadow: 
         0 2px 4px -1px rgba(0, 0, 0, 0.1),
         0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode #embed-container:hover {
-    border-color: #60a5fa; /* Lighter primary for hover */
+    border-color: #60a5fa;
     box-shadow: 
         0 8px 15px -3px rgba(0, 0, 0, 0.2),
         0 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode .button {
-    /* Slightly darker base shadow for contrast */
     box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
 }
 
 body.dark-mode .button:hover {
-    filter: brightness(1.15); /* Slightly brighter hover */
+    filter: brightness(1.15);
     box-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.2);
 }
 
 body.dark-mode .button:focus {
-    /* Adjust focus ring for dark bg */
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
 }
 
 body.dark-mode .clear-btn {
-    background-color: #475569; /* Darker grey */
-    color: #e2e8f0; /* Lighter text */
+    background-color: #475569;
+    color: #e2e8f0;
     border-color: #64748b;
 }
 
@@ -459,120 +455,140 @@ body.dark-mode #custom-embed-code:focus {
     background-color: rgba(30, 41, 59, 0.9);
 }
 
-/* Footer dark mode rules are already present */
-
-/* Styles for Resize Controls */
 .resize-controls {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap;
     gap: 0.75rem;
     justify-content: center;
-    margin-top: 1.5rem; 
-    padding-bottom: 1.5rem;
-    border-bottom: 1px dashed var(--border-color);
-    margin-bottom: 2rem;
+    margin-top: 0;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .resize-btn {
-    /* Slightly smaller buttons */
     padding: 0.5rem 1.25rem;
     font-size: 0.9rem;
-    /* Different color scheme - e.g., secondary/grey */
-    background-color: #64748b; /* Slate-500 */
+    background-color: #64748b;
     color: white;
-    /* Remove initial brightness filter if applied globally */
     filter: none;
 }
 
 .resize-btn:hover {
-    background-color: #475569; /* Slate-600 */
-    filter: none; /* Override global hover filter if needed */
+    background-color: #475569;
+    filter: none;
     transform: translateY(-1px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-/* Add specific dark mode for resize buttons if needed */
 body.dark-mode .resize-btn {
-    background-color: #475569; /* Darker base */
+    background-color: #475569;
     color: #cbd5e1;
 }
 body.dark-mode .resize-btn:hover {
-    background-color: #52525b; /* Zinc-600 */
+    background-color: #52525b;
 }
 
-/* Sandbox Controls Styles */
 .sandbox-controls {
-    margin-top: 1.5rem;
-    padding: 1.5rem;
-    border: 1px dashed var(--border-color);
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(248, 250, 252, 0.5);
     width: 100%;
     max-width: 800px;
 }
 
 .sandbox-title {
-    margin: 0 0 1rem 0;
-    font-size: 1rem;
+    margin: 0 0 1.25rem 0;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-color);
     text-align: left;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .sandbox-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1.5rem;
 }
 
 .sandbox-options label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: 0.6rem;
+    font-size: 0.95rem;
     cursor: pointer;
+    padding: 0.25rem 0;
 }
 
 .sandbox-options input[type="checkbox"] {
     cursor: pointer;
     accent-color: var(--primary-color);
+    width: 1.1em;
+    height: 1.1em;
 }
 
 .sandbox-options code {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 0.85rem;
-    background-color: rgba(0,0,0,0.05);
-    padding: 0.1em 0.4em;
-    border-radius: 4px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.9rem;
+    background-color: rgba(0,0,0,0.04);
+    padding: 0.2em 0.5em;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.sandbox-options label.dangerous {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border-color);
+    grid-column: 1 / -1;
+    background-color: rgba(254, 242, 242, 0.6);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 6px;
 }
 
 .sandbox-options label.dangerous code {
-    color: #dc2626; /* Red-600 */
+    color: #b91c1c;
+    background-color: rgba(220, 38, 38, 0.08);
+    border-color: rgba(220, 38, 38, 0.1);
 }
 
 .warning-icon {
-    color: #f59e0b; /* Amber-500 */
-    cursor: help; /* Indicate tooltip */
+    color: #d97706;
+    cursor: help;
+    margin-left: auto;
+    padding-left: 0.5rem;
 }
 
-/* Dark Mode Sandbox Controls */
 body.dark-mode .sandbox-controls {
-    background-color: rgba(30, 41, 59, 0.4);
+    background-color: rgba(30, 41, 59, 0.3);
     border-color: var(--border-color);
 }
 
 body.dark-mode .sandbox-title {
      color: var(--text-color);
+     border-bottom-color: var(--border-color);
 }
 
 body.dark-mode .sandbox-options code {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .sandbox-options label.dangerous {
+    background-color: rgba(127, 29, 29, 0.3);
+    border-top-color: var(--border-color);
 }
 
 body.dark-mode .sandbox-options label.dangerous code {
-    color: #f87171; /* Red-400 */
+    color: #fca5a5;
+    background-color: rgba(248, 113, 113, 0.1);
+    border-color: rgba(248, 113, 113, 0.2);
 }
 
 body.dark-mode .warning-icon {
-    color: #facc15; /* Yellow-400 */
+    color: #fcd34d;
 } 

@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Style: Added `:focus` and `:active` states to buttons for better interactivity and accessibility.
 
 ### Changed
+- Style: Improve overall typography, spacing, and visual hierarchy.
+- Style: Restructure and visually enhance the Sandbox Permissions section for clarity.
 - Design: Redesigned footer with improved links (Repo, Issues, License, LinkedIn, Instagram) and styling.
 - Style: Refined button appearance (subtler hover/active effects, improved shadows, distinct Clear button).
 - Style: Improved appearance of the embed container's initial state (icon, text, solid border, refined hover effect).
