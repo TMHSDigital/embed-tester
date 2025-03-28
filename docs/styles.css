@@ -384,6 +384,12 @@ body.dark-mode {
 
 body.dark-mode header {
     background: linear-gradient(135deg, #1e40af, #172554);
+    color: white;
+}
+
+body.dark-mode header h1,
+body.dark-mode header .subtitle {
+    color: white;
 }
 
 body.dark-mode .embed-section {
@@ -564,7 +570,7 @@ body.dark-mode .resize-btn:hover {
 }
 
 body.dark-mode .sandbox-controls {
-    background-color: rgba(30, 41, 59, 0.3);
+    background-color: rgba(30, 41, 59, 0.5);
     border-color: var(--border-color);
 }
 
@@ -575,10 +581,11 @@ body.dark-mode .sandbox-title {
 
 body.dark-mode .sandbox-options label {
     color: var(--text-color);
+    font-weight: 500;
 }
 
 body.dark-mode .sandbox-options code {
-    background-color: rgba(255,255,255,0.08);
+    background-color: rgba(255,255,255,0.06);
     border-color: rgba(255,255,255,0.1);
     color: var(--text-color);
 }
