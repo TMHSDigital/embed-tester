@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Security: Improved iframe sandboxing for custom embeds by removing `allow-same-origin`.
 - Security: Added Content Security Policy (CSP) via meta tag to restrict resource loading.
 - Security: Added confirmation dialogs when enabling dangerous sandbox permissions (`allow-same-origin`, `allow-top-navigation`).
+- Documentation: Updated README.md with comprehensive feature list and usage guide.
+- Documentation: Added new API.md file with detailed function documentation.
 - Documentation: Added JSDoc comments to JavaScript functions.
 - Documentation: Added `CONTRIBUTING.md` file.
 - Documentation: Added this `CHANGELOG.md` file.
