@@ -44,6 +44,41 @@ function clearEmbed(containerId) {
     `;
 }
 
+// Function to embed custom HTML code
+function embedCustomCode(containerId) {
+    const container = document.getElementById(containerId);
+    const codeInput = document.getElementById('custom-embed-code');
+    if (!container || !codeInput) return;
+
+    const customCode = codeInput.value.trim();
+    if (!customCode) {
+        container.innerHTML = '<p class="error">Please paste embed code first.</p>';
+        // Optionally clear the error after a few seconds
+        setTimeout(() => {
+            if (container.querySelector('.error')) {
+                 clearEmbed(containerId);
+            }
+        }, 3000);
+        return;
+    }
+
+    container.innerHTML = '<div class="loading">Loading custom embed...</div>';
+
+    const element = document.createElement('iframe');
+    element.classList.add('embedded-iframe');
+    // Set sandbox attributes - adjust as needed, start restrictive
+    element.setAttribute('sandbox', 'allow-scripts allow-same-origin'); 
+    element.srcdoc = customCode; // Use srcdoc for security
+
+    element.onerror = () => container.innerHTML = '<p class="error">Failed to load custom embed. Check the code.</p>';
+    
+    // Clear loading and append after a tiny delay to ensure DOM update
+    setTimeout(() => {
+        container.innerHTML = '';
+        container.appendChild(element);
+    }, 50); // Small delay
+}
+
 // Example usage:
 // embedElement('map', 'embed-container');
 // embedElement('chart', 'embed-container');
@@ -76,4 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.youtube-btn')?.addEventListener('click', () => embedElement('youtube', containerId));
     document.querySelector('.clear-btn')?.addEventListener('click', () => clearEmbed(containerId));
     document.querySelector('.toggle-mode-btn')?.addEventListener('click', toggleDarkMode);
+    // Add listener for the new custom embed button
+    document.querySelector('.custom-embed-btn')?.addEventListener('click', () => embedCustomCode(containerId));
 }); 
