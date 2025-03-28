@@ -7,10 +7,7 @@ function embedElement(type, containerId) {
     container.innerHTML = '<div class="loading">Loading embed...</div>';
     
     const element = document.createElement('iframe');
-    element.style.width = '100%';
-    element.style.height = '100%';
-    element.style.border = 'none';
-    element.style.borderRadius = '8px';
+    element.classList.add('embedded-iframe');
     element.setAttribute('loading', 'lazy');
     
     switch (type) {
@@ -68,4 +65,15 @@ function initDarkMode() {
 }
 
 // Call initDarkMode when the page loads
-document.addEventListener('DOMContentLoaded', initDarkMode); 
+document.addEventListener('DOMContentLoaded', initDarkMode);
+
+// Add event listeners for embed buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const containerId = 'embed-container';
+
+    document.querySelector('.map-btn')?.addEventListener('click', () => embedElement('map', containerId));
+    document.querySelector('.chart-btn')?.addEventListener('click', () => embedElement('chart', containerId));
+    document.querySelector('.youtube-btn')?.addEventListener('click', () => embedElement('youtube', containerId));
+    document.querySelector('.clear-btn')?.addEventListener('click', () => clearEmbed(containerId));
+    document.querySelector('.toggle-mode-btn')?.addEventListener('click', toggleDarkMode);
+}); 
