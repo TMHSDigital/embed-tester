@@ -259,35 +259,66 @@ h1 {
 }
 
 .footer {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 2rem;
+    padding: 2rem 0; /* Reduced vertical padding */
     margin-top: 4rem;
-    position: relative;
-    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.02); /* Subtle background */
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: #64748b;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; /* Space between text and links */
 }
 
-.footer a {
-    color: rgba(255,255,255,0.9);
-    transition: opacity 0.2s;
+.footer-text {
+    margin: 0; /* Reset default paragraph margin */
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem; /* Space between links */
+    align-items: center;
+}
+
+.footer-links a {
+    color: #64748b; /* Match footer text color */
     text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem; /* Space between icon and text */
+    transition: color 0.2s ease;
 }
 
-.footer a:hover {
-    opacity: 0.8;
+.footer-links a:hover,
+.footer-links a:focus {
+    color: var(--primary-color);
+    text-decoration: none; /* Keep underline off */
+}
+
+.footer-links i {
+    font-size: 1.1em; /* Slightly larger icons */
+}
+
+/* Dark Mode Footer Adjustments */
+body.dark-mode .footer {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #94a3b8; /* Lighter text for dark mode */
+}
+
+body.dark-mode .footer-links a {
+    color: #94a3b8;
+}
+
+body.dark-mode .footer-links a:hover,
+body.dark-mode .footer-links a:focus {
+    color: #60a5fa; /* Lighter primary color for hover */
 }
 
 @keyframes spin {
@@ -384,7 +415,8 @@ body.dark-mode .loading::after {
 }
 
 body.dark-mode .footer {
-    background: linear-gradient(135deg, #1e40af, #1e293b);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #94a3b8;
 }
 
 /* Toggle theme button specific styles */
