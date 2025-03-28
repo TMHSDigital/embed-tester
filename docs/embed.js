@@ -49,9 +49,10 @@ function clearEmbed(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = `
-        <div>
-            <p>Your embedded element will appear here</p>
-            <p style="font-size: 0.9rem; opacity: 0.7;">Click one of the buttons below...</p>
+        <div style="text-align: center;">
+            <i class="fas fa-code" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+            <p style="margin-bottom: 0.5rem;">Embed Preview Area</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">Select an option below or paste your code</p>
         </div>
     `;
 }

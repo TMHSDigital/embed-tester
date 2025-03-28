@@ -12,14 +12,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation: Added JSDoc comments to JavaScript functions.
 - Documentation: Added `CONTRIBUTING.md` file.
 - Documentation: Added this `CHANGELOG.md` file.
+- Style: Added `:focus` and `:active` states to buttons for better interactivity and accessibility.
 
 ### Changed
 - Design: Redesigned footer with improved links (Repo, Issues, License, LinkedIn, Instagram) and styling.
+- Style: Refined button appearance (subtler hover/active effects, improved shadows, distinct Clear button).
+- Style: Improved appearance of the embed container's initial state (icon, text, solid border, refined hover effect).
 - Refactor: Moved button click handlers from inline HTML `onclick` attributes to JavaScript event listeners.
 - Refactor: Moved iframe styling from inline JavaScript styles to a dedicated CSS class (`.embedded-iframe`).
 
 ### Fixed
 - Fixed placeholder GitHub link in the footer of `docs/index.html`.
+- Fixed missing dark mode style overrides after CSS refactoring.
 
 ### Security
 - Hardened iframe sandbox settings for predefined embeds (Map, Chart, YouTube) by removing `allow-same-origin`.

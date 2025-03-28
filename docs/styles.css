@@ -113,7 +113,7 @@ h1 {
     max-width: 800px;
     height: 450px;
     margin: 2rem auto;
-    border: 2px dashed var(--border-color);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -125,34 +125,16 @@ h1 {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-#embed-container::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, 
-        transparent 0%,
-        rgba(59,130,246,0.1) 50%,
-        transparent 100%
-    );
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-#embed-container:hover::before {
-    opacity: 1;
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        0 1px 2px -1px rgba(0, 0, 0, 0.05);
 }
 
 #embed-container:hover {
-    transform: translateY(-2px) scale(1.01);
     box-shadow: 
-        0 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        0 8px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-color: var(--primary-color);
 }
 
@@ -175,44 +157,34 @@ h1 {
     padding: 0.75rem 1.75rem;
     color: white;
     border: none;
+    border: 1px solid transparent;
     border-radius: 12px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
     position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, filter 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    background-image: linear-gradient(135deg, 
-        rgba(255,255,255,0.1) 0%,
-        rgba(255,255,255,0) 100%
-    );
-}
-
-.button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        rgba(255,255,255,0.1) 0%,
-        rgba(255,255,255,0) 100%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.button:hover::before {
-    opacity: 1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
 }
 
 .button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.08);
+    filter: brightness(1.1);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+.button:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
 }
 
 .button i {
@@ -220,19 +192,23 @@ h1 {
 }
 
 .map-btn { background-color: #3b82f6; }
-.map-btn:hover { background-color: #2563eb; }
 
 .chart-btn { background-color: #6366f1; }
-.chart-btn:hover { background-color: #4f46e5; }
 
 .youtube-btn { background-color: #ef4444; }
-.youtube-btn:hover { background-color: #dc2626; }
 
 .clear-btn { 
-    background-color: #64748b;
+    background-color: #94a3b8;
+    color: #1e293b;
     margin-left: 1rem;
+    border-color: #cbd5e1;
 }
-.clear-btn:hover { background-color: #475569; }
+.clear-btn:hover {
+    filter: brightness(1.05);
+}
+.clear-btn:active {
+    filter: brightness(0.95);
+}
 
 .loading {
     display: inline-flex;
@@ -358,83 +334,8 @@ body.dark-mode .footer-links a:focus {
     }
 }
 
-/* Focus styling for accessibility */
-.button:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-/* Manual dark mode override */
-body.dark-mode {
-    background: 
-        radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
-        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: #f8fafc;
-}
-
-body.dark-mode header {
-    background: linear-gradient(135deg, #1e40af, #1e293b);
-}
-
-body.dark-mode .embed-section {
-    background: rgba(30, 41, 59, 0.85);
-    box-shadow: 
-        0 8px 32px 0 rgba(0, 0, 0, 0.3),
-        0 1px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode #embed-container {
-    background: rgba(30, 41, 59, 0.5);
-    border-color: #334155;
-    color: #cbd5e1;
-}
-
-body.dark-mode #embed-container:hover {
-    border-color: var(--primary-color);
-    box-shadow: 
-        0 20px 25px -5px rgba(0, 0, 0, 0.3),
-        0 10px 10px -5px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .button {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .button:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-mode .loading {
-    color: #f8fafc;
-}
-
-body.dark-mode .loading::after {
-    border-color: #1e293b;
-    border-top-color: #3b82f6;
-}
-
-body.dark-mode .footer {
-    background-color: rgba(255, 255, 255, 0.03);
-    color: #94a3b8;
-}
-
 /* Toggle theme button specific styles */
-.toggle-mode-btn {
-    background-color: #475569;
-}
-
-.toggle-mode-btn:hover {
-    background-color: #334155;
-}
-
-body.dark-mode .toggle-mode-btn {
-    background-color: #64748b;
-}
-
-body.dark-mode .toggle-mode-btn:hover {
-    background-color: #94a3b8;
-}
+.toggle-mode-btn { background-color: #f59e0b; }
 
 .custom-embed-area {
     margin-top: 2.5rem;
@@ -466,10 +367,96 @@ body.dark-mode .toggle-mode-btn:hover {
 
 .custom-embed-btn {
     background-color: #10b981; /* Emerald green */
-    width: auto; /* Adjust width as needed */
+    width: auto;
     padding: 0.75rem 2rem;
 }
 
-.custom-embed-btn:hover {
-    background-color: #059669;
-} 
+/* --- Dark Mode Overrides --- */
+
+body.dark-mode {
+    /* Use variables defined in @media (prefers-color-scheme: dark) */
+    background: 
+        radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Dark gradient */
+    color: var(--text-color); /* Uses dark text color */
+}
+
+body.dark-mode header {
+    /* Darker header gradient */
+    background: linear-gradient(135deg, #1e40af, #172554); 
+}
+
+body.dark-mode .embed-section {
+    background: rgba(30, 41, 59, 0.85); /* From original dark vars */
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.2),
+        0 1px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .embed-section::before {
+    /* Adjust inner gradient for dark */
+     background: linear-gradient(135deg, 
+        rgba(59,130,246,0.1) 0%,
+        rgba(59,130,246,0) 100%
+    );
+}
+
+body.dark-mode #embed-container {
+    background: rgba(30, 41, 59, 0.6); /* Darker background */
+    border-color: var(--border-color); /* Uses dark border color */
+    color: #cbd5e1; /* Lighter grey text */
+    box-shadow: 
+        0 2px 4px -1px rgba(0, 0, 0, 0.1),
+        0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #embed-container:hover {
+    border-color: #60a5fa; /* Lighter primary for hover */
+    box-shadow: 
+        0 8px 15px -3px rgba(0, 0, 0, 0.2),
+        0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .button {
+    /* Slightly darker base shadow for contrast */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .button:hover {
+    filter: brightness(1.15); /* Slightly brighter hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .button:focus {
+    /* Adjust focus ring for dark bg */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+body.dark-mode .clear-btn {
+    background-color: #475569; /* Darker grey */
+    color: #e2e8f0; /* Lighter text */
+    border-color: #64748b;
+}
+
+body.dark-mode .loading {
+    color: var(--text-color);
+}
+
+body.dark-mode .loading::after {
+    border-color: #334155;
+    border-top-color: #60a5fa;
+}
+
+body.dark-mode #custom-embed-code {
+    background-color: rgba(30, 41, 59, 0.6);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body.dark-mode #custom-embed-code:focus {
+    border-color: #60a5fa;
+    background-color: rgba(30, 41, 59, 0.9);
+}
+
+/* Footer dark mode rules are already present */ 
