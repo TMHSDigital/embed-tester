@@ -573,9 +573,14 @@ body.dark-mode .sandbox-title {
      border-bottom-color: var(--border-color);
 }
 
+body.dark-mode .sandbox-options label {
+    color: var(--text-color);
+}
+
 body.dark-mode .sandbox-options code {
     background-color: rgba(255,255,255,0.08);
     border-color: rgba(255,255,255,0.1);
+    color: var(--text-color);
 }
 
 body.dark-mode .sandbox-options label.dangerous {
