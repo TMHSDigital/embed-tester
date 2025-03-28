@@ -28,7 +28,7 @@ function embedElement(type, containerId) {
             break;
         case 'youtube':
             element.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
-            element.setAttribute('sandbox', 'allow-scripts allow-popups');
+            element.setAttribute('sandbox', 'allow-scripts allow-popups allow-presentation');
             break;
         default:
             container.innerHTML = '<p class="error">Unsupported embed type</p>';
