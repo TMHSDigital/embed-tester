@@ -67,12 +67,12 @@ function clearEmbed(containerId) {
 function embedCustomCode(containerId) {
     const container = document.getElementById(containerId);
     const codeInput = document.getElementById('custom-embed-code');
+    const sandboxCheckboxes = document.querySelectorAll('.sandbox-options input[name="sandbox"]:checked');
     if (!container || !codeInput) return;
 
     const customCode = codeInput.value.trim();
     if (!customCode) {
         container.innerHTML = '<p class="error">Please paste embed code first.</p>';
-        // Optionally clear the error after a few seconds
         setTimeout(() => {
             if (container.querySelector('.error')) {
                  clearEmbed(containerId);
@@ -81,15 +81,27 @@ function embedCustomCode(containerId) {
         return;
     }
 
+    // Build sandbox string from checked boxes
+    let sandboxPermissions = [];
+    sandboxCheckboxes.forEach(checkbox => {
+        sandboxPermissions.push(checkbox.value);
+    });
+    const sandboxString = sandboxPermissions.join(' ');
+
     container.innerHTML = '<div class="loading">Loading custom embed...</div>';
 
     const element = document.createElement('iframe');
     element.classList.add('embedded-iframe');
-    // Set sandbox attributes - *removed allow-same-origin* for security
-    element.setAttribute('sandbox', 'allow-scripts'); 
+    // Set sandbox attribute dynamically
+    if (sandboxString) {
+        element.setAttribute('sandbox', sandboxString);
+    } else {
+        // If no boxes checked, sandbox is fully restrictive (good default)
+        element.setAttribute('sandbox', '');
+    }
     element.srcdoc = customCode; // Use srcdoc for security
 
-    element.onerror = () => container.innerHTML = '<p class="error">Failed to load custom embed. Check the code.</p>';
+    element.onerror = () => container.innerHTML = '<p class="error">Failed to load custom embed. Check the code and sandbox permissions.</p>';
     
     // Clear loading and append after a tiny delay to ensure DOM update
     setTimeout(() => {

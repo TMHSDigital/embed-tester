@@ -65,6 +65,44 @@
 
             <div class="custom-embed-area">
                 <textarea id="custom-embed-code" placeholder="Paste your HTML embed code here..." rows="5" aria-label="Custom embed code input"></textarea>
+                
+                <!-- Add Sandbox Controls -->
+                <div class="sandbox-controls">
+                    <h4 class="sandbox-title">Sandbox Permissions:</h4>
+                    <div class="sandbox-options">
+                        <label>
+                            <input type="checkbox" name="sandbox" value="allow-scripts" checked>
+                            <code>allow-scripts</code>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="sandbox" value="allow-popups">
+                            <code>allow-popups</code>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="sandbox" value="allow-forms">
+                            <code>allow-forms</code>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="sandbox" value="allow-presentation">
+                            <code>allow-presentation</code>
+                        </label>
+                         <label>
+                            <input type="checkbox" name="sandbox" value="allow-modals">
+                            <code>allow-modals</code>
+                        </label>
+                        <label class="dangerous">
+                            <input type="checkbox" name="sandbox" value="allow-same-origin">
+                            <code>allow-same-origin</code> 
+                            <i class="fas fa-exclamation-triangle warning-icon" title="DANGER: Allows embed to access parent page resources (cookies, DOM). Only use if absolutely necessary and you trust the source."></i>
+                        </label>
+                        <label class="dangerous">
+                            <input type="checkbox" name="sandbox" value="allow-top-navigation">
+                            <code>allow-top-navigation</code>
+                             <i class="fas fa-exclamation-triangle warning-icon" title="DANGER: Allows embed to navigate the top-level page (redirect). Only use if absolutely necessary and you trust the source."></i>
+                        </label>
+                    </div>
+                </div>
+
                 <button class="button custom-embed-btn">
                     <i class="fas fa-code"></i> Embed Custom Code
                 </button>

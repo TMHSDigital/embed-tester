@@ -498,4 +498,81 @@ body.dark-mode .resize-btn {
 }
 body.dark-mode .resize-btn:hover {
     background-color: #52525b; /* Zinc-600 */
+}
+
+/* Sandbox Controls Styles */
+.sandbox-controls {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    max-width: 800px;
+}
+
+.sandbox-title {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: left;
+}
+
+.sandbox-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.sandbox-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.sandbox-options input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.sandbox-options code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.85rem;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+}
+
+.sandbox-options label.dangerous code {
+    color: #dc2626; /* Red-600 */
+}
+
+.warning-icon {
+    color: #f59e0b; /* Amber-500 */
+    cursor: help; /* Indicate tooltip */
+}
+
+/* Dark Mode Sandbox Controls */
+body.dark-mode .sandbox-controls {
+    background-color: rgba(30, 41, 59, 0.4);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .sandbox-title {
+     color: var(--text-color);
+}
+
+body.dark-mode .sandbox-options code {
+    background-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .sandbox-options label.dangerous code {
+    color: #f87171; /* Red-400 */
+}
+
+body.dark-mode .warning-icon {
+    color: #facc15; /* Yellow-400 */
 } 

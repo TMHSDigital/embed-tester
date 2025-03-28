@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Feature: Add configurable sandbox permissions checkboxes for custom code embedding.
 - Feature: Add responsiveness testing controls (Mobile, Tablet, Desktop, Fit) to resize embed container.
 - Feature: Allow users to paste custom HTML embed code via textarea.
 - Security: Improved iframe sandboxing for custom embeds by removing `allow-same-origin`.
