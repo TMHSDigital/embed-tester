@@ -14,11 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation: Added this `CHANGELOG.md` file.
 
 ### Changed
+- Design: Redesigned footer with improved links and styling.
 - Refactor: Moved button click handlers from inline HTML `onclick` attributes to JavaScript event listeners.
 - Refactor: Moved iframe styling from inline JavaScript styles to a dedicated CSS class (`.embedded-iframe`).
 
 ### Fixed
 - Fixed placeholder GitHub link in the footer of `docs/index.html`.
+
+### Security
+- Hardened iframe sandbox settings for predefined embeds (Map, Chart, YouTube) by removing `allow-same-origin`.
 
 ## [0.1.0] - YYYY-MM-DD
 ### Added
