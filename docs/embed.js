@@ -66,8 +66,8 @@ function embedCustomCode(containerId) {
 
     const element = document.createElement('iframe');
     element.classList.add('embedded-iframe');
-    // Set sandbox attributes - adjust as needed, start restrictive
-    element.setAttribute('sandbox', 'allow-scripts allow-same-origin'); 
+    // Set sandbox attributes - *removed allow-same-origin* for security
+    element.setAttribute('sandbox', 'allow-scripts'); 
     element.srcdoc = customCode; // Use srcdoc for security
 
     element.onerror = () => container.innerHTML = '<p class="error">Failed to load custom embed. Check the code.</p>';
