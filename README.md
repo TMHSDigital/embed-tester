@@ -27,13 +27,16 @@
 
 ## Features
 
+- **Responsive Testing** - Instantly test how embeds look at different viewport widths (Mobile, Tablet, Desktop)
+- **Custom Code Embedding** - Paste any HTML code to test within a secure sandbox
+- **Configurable Sandbox** - Fine-tune iframe sandbox permissions to test functionality vs security
 - **Map Embeds** - Test Google Maps and other mapping services
-- **Chart Embeds** - Visualize data with various chart libraries
+- **Chart Embeds** - Visualize data with chart libraries (using Plotly)
 - **Video Embeds** - YouTube and other video platform integration
-- **Dark Mode** - Automatic dark mode based on system preferences
-- **Responsive** - Works perfectly on all devices
+- **Dark Mode** - Automatic dark mode based on system preferences or manual toggle
+- **Responsive Design** - Optimized layout for all devices
 - **Performance** - Lightweight and optimized
-- **Security** - Sandboxed iframes for embed isolation
+- **Security** - Content Security Policy and sandboxed iframes for protection
 
 ## Quick Start
 
@@ -64,15 +67,38 @@ docs/
 └── embed.js        # Embed functionality
 ```
 
-## Example Embeds
+## Usage Guide
 
-The embed tester supports various types of embeddable content:
+### Testing Predefined Embeds
+Click on any of the preset buttons (Map, Chart, YouTube) to load an example embed in the preview area.
 
-- **Maps**: Google Maps embeds for location visualization
-- **Charts**: MongoDB Charts for data visualization
-- **Videos**: YouTube video embeds
+### Testing Custom Code
+1. Paste your HTML embed code into the text area
+2. Configure sandbox permissions as needed (see security section below)
+3. Click "Embed Custom Code" to render your embed
 
-Each embed is sandboxed and responsive, making it perfect for testing how embeds will look in your own projects.
+### Responsive Testing
+Use the sizing controls (Mobile, Tablet, Desktop, Fit Container) to see how your embed looks at different viewport widths.
+
+### Security Controls
+The sandbox permissions section allows you to configure which capabilities your embedded content has:
+
+- **allow-scripts** - Permits JavaScript execution (enabled by default)
+- **allow-popups** - Allows opening new windows/popups
+- **allow-forms** - Enables form submission
+- **allow-presentation** - Permits entering fullscreen mode
+- **allow-modals** - Allows displaying modal dialogs
+
+**Advanced/Dangerous Permissions** (require confirmation):
+- **allow-same-origin** - Gives embedded content access to the parent page (risky)
+- **allow-top-navigation** - Allows redirecting the entire page (risky)
+
+## Security Features
+
+- **Content Security Policy (CSP)** - Restricts resource loading to trusted sources
+- **Sandboxed iframes** - All embeds are isolated by default
+- **Confirmation Dialogs** - Warns when enabling potentially dangerous permissions
+- **Security Visual Indicators** - Clearly highlights risky settings
 
 ## Contributing
 
@@ -81,6 +107,8 @@ Contributions are welcome! Feel free to:
 - Report bugs
 - Suggest features
 - Submit pull requests
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
