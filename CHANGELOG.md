@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Style: Added `:focus` and `:active` states to buttons for better interactivity and accessibility.
 - Feature: Save/Load custom embed code and sandbox permissions to/from localStorage.
 - Accessibility: Add focus-visible styles for sandbox checkboxes.
+- Security: Add `Referrer-Policy: strict-origin-when-cross-origin` meta tag.
 
 ### Changed
 - Style: Revamped header/hero section with animated gradient and updated typography.
