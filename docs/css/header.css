@@ -1,0 +1,88 @@
+/* docs/css/header.css */
+
+header {
+    /* Animated Gradient Background - More Vibrant */
+    background: linear-gradient(-45deg, #5e72e4, #825ee4, #e14eca, #f5365c);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite; /* Faster animation */
+
+    color: white;
+    padding: 3rem 0; /* Slightly more padding */
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    text-align: center; /* Center content */
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif; /* Use Poppins */
+    font-size: 3.2rem; /* Make it a bit bigger */
+    font-weight: 800; /* Bolder Poppins weight */
+    margin: 0 0 0.75rem 0;
+    padding: 0;
+    text-align: center;
+    letter-spacing: -0.04em; /* Slightly tighter spacing */
+    text-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Stronger shadow */
+}
+
+.subtitle {
+    text-align: center;
+    color: rgba(255,255,255,0.95);
+    font-size: 1.1rem; /* Slightly larger */
+    max-width: 600px; /* Constrain width */
+    margin: 0 auto; /* Center constrained subtitle */
+    letter-spacing: 0.01em;
+    text-transform: none; /* Ensure normal case */
+    font-weight: 400; /* Regular weight */
+    line-height: 1.5; /* Adjust line height */
+}
+
+/* Dark Mode Header */
+body.dark-mode header {
+    /* Background animation is inherited */
+    color: white;
+}
+
+body.dark-mode header h1,
+body.dark-mode header .subtitle {
+    /* Explicitly set white again if needed, though inherited usually works */
+    color: white;
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.6rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+    }
+    h1 {
+        font-size: 2.2rem; /* Further reduce h1 size */
+        letter-spacing: -0.03em;
+    }
+    .subtitle {
+        font-size: 0.95rem;
+    }
+} 

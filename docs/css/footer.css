@@ -1,0 +1,64 @@
+/* docs/css/footer.css */
+
+.footer {
+    padding: 2.5rem 0;
+    margin-top: 5rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-color-secondary);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-text {
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.footer-links a {
+    color: var(--text-color-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer-links i {
+    font-size: 1.1em;
+}
+
+/* Dark Mode Footer */
+body.dark-mode .footer {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--text-color-secondary);
+}
+
+body.dark-mode .footer-links a {
+    color: var(--text-color-secondary);
+}
+
+body.dark-mode .footer-links a:hover,
+body.dark-mode .footer-links a:focus {
+    color: #60a5fa; /* Consider using a primary dark var if defined */
+} 

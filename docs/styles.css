@@ -1,90 +1,10 @@
-:root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --background-color: #f8fafc;
-    --text-color: #1e293b;
-    --border-color: #e2e8f0;
-}
+@import url('css/base.css');
+@import url('css/header.css');
+@import url('css/footer.css');
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #0f172a;
-        --text-color: #f8fafc;
-        --border-color: #334155;
-    }
-    
-    .embed-section {
-        background: rgba(30,41,59,0.85);
-    }
-}
+/* Keep remaining styles below, after removing the moved ones */
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.7;
-    background-color: var(--background-color);
-    background-attachment: fixed;
-    color: var(--text-color);
-    min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-header {
-    /* Animated Gradient Background - More Vibrant */
-    background: linear-gradient(-45deg, #5e72e4, #825ee4, #e14eca, #f5365c);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite; /* Faster animation */
-
-    color: white;
-    padding: 3rem 0; /* Slightly more padding */
-    margin-bottom: 3rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-    text-align: center; /* Center content */
-}
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-h1 {
-    font-family: 'Poppins', sans-serif; /* Use Poppins */
-    font-size: 3.2rem; /* Make it a bit bigger */
-    font-weight: 800; /* Bolder Poppins weight */
-    margin: 0 0 0.75rem 0;
-    padding: 0;
-    text-align: center;
-    letter-spacing: -0.04em; /* Slightly tighter spacing */
-    text-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Stronger shadow */
-}
-
-.subtitle {
-    text-align: center;
-    color: rgba(255,255,255,0.95);
-    font-size: 1.1rem; /* Slightly larger */
-    max-width: 600px; /* Constrain width */
-    margin: 0 auto; /* Center constrained subtitle */
-    letter-spacing: 0.01em;
-    text-transform: none; /* Ensure normal case */
-    font-weight: 400; /* Regular weight */
-    line-height: 1.5; /* Adjust line height */
-}
+/* Removed :root, body, .container, header, h1, .subtitle, footer styles */
 
 main.container {
     padding-top: 1rem;
@@ -338,14 +258,7 @@ body.dark-mode .footer-links a:focus {
 }
 
 @media (max-width: 768px) {
-    /* Tablet and smaller adjustments */
-    h1 {
-        font-size: 2.6rem;
-    }
-    .subtitle {
-        font-size: 1rem;
-        max-width: 90%;
-    }
+    /* Tablet and smaller adjustments - keep non-header ones */
     .embed-section {
         padding: 2rem 1.5rem;
     }
@@ -359,21 +272,7 @@ body.dark-mode .footer-links a:focus {
 }
 
 @media (max-width: 640px) {
-    /* Phone adjustments */
-    .container {
-        padding: 0 1rem; /* Reduce side padding */
-    }
-    header {
-        padding: 2rem 0;
-        margin-bottom: 2rem;
-    }
-    h1 {
-        font-size: 2.2rem; /* Further reduce h1 size */
-        letter-spacing: -0.03em;
-    }
-    .subtitle {
-        font-size: 0.95rem;
-    }
+    /* Phone adjustments - keep non-header/base ones */
     .controls {
         flex-wrap: wrap;
         gap: 0.75rem; /* Slightly more gap when wrapped */
