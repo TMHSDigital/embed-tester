@@ -35,9 +35,31 @@ function embedElement(type, containerId) {
             return;
     }
     
-    element.onerror = () => container.innerHTML = '<p class="error">Failed to load embed</p>';
+    element.onerror = () => displayEmbedError(containerId, 'Failed to load embed. Check the source or network console.');
     container.innerHTML = '';
     container.appendChild(element);
+}
+
+/**
+ * Displays a standardized error message within the specified container.
+ *
+ * @param {string} containerId The ID of the container element.
+ * @param {string} message The error message to display.
+ * @param {number} [clearAfterMs=0] Optional: Milliseconds after which to clear the error and show placeholder.
+ */
+function displayEmbedError(containerId, message, clearAfterMs = 0) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = `<p class="error">${message}</p>`;
+
+    if (clearAfterMs > 0) {
+        setTimeout(() => {
+            // Only clear if the error message is still the current content
+            if (container.querySelector('.error')?.textContent === message) {
+                clearEmbed(containerId);
+            }
+        }, clearAfterMs);
+    }
 }
 
 /**
@@ -49,10 +71,11 @@ function clearEmbed(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = `
-        <div style="text-align: center;">
-            <i class="fas fa-code" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-            <p style="margin-bottom: 0.5rem;">Embed Preview Area</p>
-            <p style="font-size: 0.9rem; opacity: 0.7;">Select an option below or paste your code</p>
+        <div class="placeholder-content">
+            <i class="fas fa-code" aria-hidden="true"></i>
+            <p class="placeholder-title">Embed Preview Area</p>
+            <p class="placeholder-text">Use controls above or paste code below.</p>
+            <p class="placeholder-subtext">If content fails to load, check URL/code validity, <br>and potential cross-origin/CSP restrictions.</p>
         </div>
     `;
 }
@@ -72,12 +95,7 @@ function embedCustomCode(containerId) {
 
     const customCode = codeInput.value.trim();
     if (!customCode) {
-        container.innerHTML = '<p class="error">Please paste embed code first.</p>';
-        setTimeout(() => {
-            if (container.querySelector('.error')) {
-                 clearEmbed(containerId);
-            }
-        }, 3000);
+        displayEmbedError(containerId, 'Please paste embed code first.', 3000); // Use helper, auto-clear
         return;
     }
 
@@ -98,12 +116,7 @@ function embedCustomCode(containerId) {
     }
 
     if (!proceed) {
-        container.innerHTML = '<p class="error">Embedding cancelled due to security concerns.</p>';
-         setTimeout(() => {
-            if (container.querySelector('.error')) {
-                 clearEmbed(containerId);
-            }
-        }, 3000);
+        displayEmbedError(containerId, 'Embedding cancelled due to security concerns.', 4000); // Use helper, auto-clear
         return; // Stop embedding if user cancelled
     }
 
@@ -120,7 +133,7 @@ function embedCustomCode(containerId) {
     }
     element.srcdoc = customCode; // Use srcdoc for security
 
-    element.onerror = () => container.innerHTML = '<p class="error">Failed to load custom embed. Check the code and sandbox permissions.</p>';
+    element.onerror = () => displayEmbedError(containerId, 'Failed to load custom embed. Check the code, sandbox permissions, and network console.');
     
     // Clear loading and append after a tiny delay to ensure DOM update
     setTimeout(() => {

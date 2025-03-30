@@ -626,4 +626,67 @@ body.dark-mode .sandbox-options label.dangerous code {
 
 body.dark-mode .warning-icon {
     color: #fcd34d;
+}
+
+/* Placeholder Styles */
+#embed-container .placeholder-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color-secondary);
+    opacity: 0.8;
+}
+
+#embed-container .placeholder-content i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+#embed-container .placeholder-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+#embed-container .placeholder-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+#embed-container .placeholder-subtext {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+/* Error Message Styles */
+#embed-container .error {
+    color: #dc2626; /* Red for errors */
+    font-weight: 500;
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+body.dark-mode #embed-container .placeholder-content {
+    color: var(--text-color-secondary);
+    opacity: 0.7;
+}
+
+body.dark-mode #embed-container .placeholder-content i {
+    opacity: 0.4;
+}
+
+body.dark-mode #embed-container .placeholder-title {
+    color: var(--text-color);
+}
+
+body.dark-mode #embed-container .error {
+    color: #fca5a5; /* Lighter red for dark mode */
 } 
