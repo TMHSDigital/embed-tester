@@ -1,4 +1,14 @@
-# embed-tester
+<div align="center">
+  <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">EMBED-TESTER</h1>
+  
+  <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 1.5rem; background: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Test your embeddable elements with ease</p>
+  
+  <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+    <span style="padding: 0.5rem 1rem; border-radius: 8px; background: linear-gradient(to right, #84fab0 0%, #8fd3f4 100%); font-weight: 600; color: #1a202c;">Modern UI</span>
+    <span style="padding: 0.5rem 1rem; border-radius: 8px; background: linear-gradient(to right, #fa709a 0%, #fee140 100%); font-weight: 600; color: #1a202c;">Secure</span>
+    <span style="padding: 0.5rem 1rem; border-radius: 8px; background: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%); font-weight: 600; color: #1a202c;">Responsive</span>
+  </div>
+</div>
 
 <div align="center">
 
@@ -25,7 +35,9 @@
 
 </div>
 
-## Features
+<div align="center">
+  <h2 style="font-size: 2.2rem; margin-top: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Features</h2>
+</div>
 
 - **Predefined Embeds:** Quickly test common embeds like Google Maps, Plotly Charts (example), and YouTube videos.
 - **Custom Code Input:** Paste your own HTML embed code into a textarea for testing.
@@ -36,7 +48,9 @@
 - **Clean UI:** Modern interface with clear controls and improved error/placeholder feedback.
 - **Security Conscious:** Uses `srcdoc` for custom code, dynamically configured `sandbox` attributes, and a Content Security Policy (CSP) meta tag.
 
-## Quick Start
+<div align="center">
+  <h2 style="font-size: 2.2rem; margin-top: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #ff9a9e 0%, #fad0c4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Quick Start</h2>
+</div>
 
 1. **Clone the repository**
    ```bash
@@ -47,10 +61,11 @@
 2. **Open in browser**
    ```
 
-## Project Structure
+<div align="center">
+  <h2 style="font-size: 2.2rem; margin-top: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Project Structure</h2>
+</div>
 
 The website files are in the `docs` folder for GitHub Pages compatibility:
-
 ```
 docs/
 ├── index.html          # Main HTML file
@@ -65,3 +80,4 @@ docs/
 ```
 
 ## Usage Guide
+
