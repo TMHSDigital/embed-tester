@@ -86,8 +86,9 @@ function clearEmbed(containerId) {
  * creates an iframe, sets its srcdoc and sandbox attributes for security, and appends it.
  * 
  * @param {string} containerId The ID of the HTML element to embed the custom code into.
+ * @param {boolean} [skipConfirmation=false] If true, skips dangerous permission confirmations (used for auto-load).
  */
-function embedCustomCode(containerId) {
+function embedCustomCode(containerId, skipConfirmation = false) {
     const container = document.getElementById(containerId);
     const codeInput = document.getElementById('custom-embed-code');
     const sandboxCheckboxes = document.querySelectorAll('.sandbox-options input[name="sandbox"]:checked');
@@ -95,7 +96,7 @@ function embedCustomCode(containerId) {
 
     const customCode = codeInput.value.trim();
     if (!customCode) {
-        displayEmbedError(containerId, 'Please paste embed code first.', 3000); // Use helper, auto-clear
+        displayEmbedError(containerId, 'Please paste embed code first.', 3000);
         return;
     }
 
@@ -106,17 +107,19 @@ function embedCustomCode(containerId) {
     });
     const sandboxString = sandboxPermissions.join(' ');
 
-    // Confirmation for dangerous permissions
+    // Confirmation for dangerous permissions (unless skipping)
     let proceed = true;
-    if (sandboxPermissions.includes('allow-same-origin')) {
-        proceed = window.confirm("⚠️ SECURITY WARNING: You have enabled 'allow-same-origin'.\n\nThis allows the embedded content to potentially access and control this page (read cookies, change content).\n\nOnly proceed if you ABSOLUTELY trust the source of the embed code.\n\nDo you want to continue?");
-    }
-    if (proceed && sandboxPermissions.includes('allow-top-navigation')) {
-        proceed = window.confirm("⚠️ SECURITY WARNING: You have enabled 'allow-top-navigation'.\n\nThis allows the embedded content to redirect this entire page to another website.\n\nOnly proceed if you ABSOLUTELY trust the source of the embed code.\n\nDo you want to continue?");
+    if (!skipConfirmation) { // Only confirm if not skipping
+        if (sandboxPermissions.includes('allow-same-origin')) {
+            proceed = window.confirm("⚠️ SECURITY WARNING: You have enabled 'allow-same-origin'.\n\nThis allows the embedded content to potentially access and control this page (read cookies, change content).\n\nOnly proceed if you ABSOLUTELY trust the source of the embed code.\n\nDo you want to continue?");
+        }
+        if (proceed && sandboxPermissions.includes('allow-top-navigation')) {
+            proceed = window.confirm("⚠️ SECURITY WARNING: You have enabled 'allow-top-navigation'.\n\nThis allows the embedded content to redirect this entire page to another website.\n\nOnly proceed if you ABSOLUTELY trust the source of the embed code.\n\nDo you want to continue?");
+        }
     }
 
     if (!proceed) {
-        displayEmbedError(containerId, 'Embedding cancelled due to security concerns.', 4000); // Use helper, auto-clear
+        displayEmbedError(containerId, 'Embedding cancelled due to security concerns.', 4000);
         return; // Stop embedding if user cancelled
     }
 
@@ -128,7 +131,6 @@ function embedCustomCode(containerId) {
     if (sandboxString) {
         element.setAttribute('sandbox', sandboxString);
     } else {
-        // If no boxes checked, sandbox is fully restrictive (good default)
         element.setAttribute('sandbox', '');
     }
     element.srcdoc = customCode; // Use srcdoc for security
@@ -139,7 +141,7 @@ function embedCustomCode(containerId) {
     setTimeout(() => {
         container.innerHTML = '';
         container.appendChild(element);
-    }, 50); // Small delay
+    }, 50);
 }
 
 /**
@@ -183,6 +185,7 @@ document.addEventListener('DOMContentLoaded', initDarkMode);
 
 // Add event listeners for embed buttons
 document.addEventListener('DOMContentLoaded', () => {
+    initDarkMode(); // Initialize dark mode first
     const containerId = 'embed-container';
 
     document.querySelector('.map-btn')?.addEventListener('click', () => embedElement('map', containerId));
@@ -190,8 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.youtube-btn')?.addEventListener('click', () => embedElement('youtube', containerId));
     document.querySelector('.clear-btn')?.addEventListener('click', () => clearEmbed(containerId));
     document.querySelector('.toggle-mode-btn')?.addEventListener('click', toggleDarkMode);
-    // Add listener for the new custom embed button
-    document.querySelector('.custom-embed-btn')?.addEventListener('click', () => embedCustomCode(containerId));
+    document.querySelector('.custom-embed-btn')?.addEventListener('click', () => embedCustomCode(containerId)); // No skip confirmation here
 
     // Resize buttons
     document.querySelectorAll('.resize-btn').forEach(button => {
@@ -200,4 +202,96 @@ document.addEventListener('DOMContentLoaded', () => {
             resizeEmbedContainer(newWidth);
         });
     });
-}); 
+
+    // Add listeners for Save/Load buttons
+    document.getElementById('save-config-btn')?.addEventListener('click', saveConfiguration);
+    document.getElementById('load-config-btn')?.addEventListener('click', () => loadConfiguration()); // Use () => to ensure fresh call
+
+    // Automatically load configuration on page load
+    loadConfiguration();
+});
+
+// --- Configuration Save/Load ---
+
+const LOCALSTORAGE_KEY = 'embedTesterConfig';
+
+/**
+ * Saves the current custom embed code and sandbox settings to localStorage.
+ */
+function saveConfiguration() {
+    const codeInput = document.getElementById('custom-embed-code');
+    const sandboxCheckboxes = document.querySelectorAll('.sandbox-options input[name="sandbox"]:checked');
+    const saveBtn = document.getElementById('save-config-btn');
+
+    if (!codeInput) return;
+
+    const config = {
+        customCode: codeInput.value,
+        sandboxPermissions: Array.from(sandboxCheckboxes).map(cb => cb.value)
+    };
+
+    try {
+        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(config));
+        // Visual feedback
+        if (saveBtn) {
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+            saveBtn.disabled = true;
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+                saveBtn.disabled = false;
+            }, 1500);
+        }
+    } catch (error) {
+        console.error("Error saving configuration to localStorage:", error);
+        // Optionally display an error to the user
+        alert("Failed to save configuration. LocalStorage might be full or disabled.");
+    }
+}
+
+/**
+ * Loads configuration from localStorage and applies it.
+ * Also attempts to embed the loaded code.
+ */
+function loadConfiguration() {
+    const codeInput = document.getElementById('custom-embed-code');
+    const allSandboxCheckboxes = document.querySelectorAll('.sandbox-options input[name="sandbox"]');
+    
+    if (!codeInput || !allSandboxCheckboxes.length) return;
+
+    try {
+        const savedConfig = localStorage.getItem(LOCALSTORAGE_KEY);
+        if (savedConfig) {
+            const config = JSON.parse(savedConfig);
+            
+            if (config.customCode) {
+                codeInput.value = config.customCode;
+            }
+            
+            // Reset all checkboxes first
+            allSandboxCheckboxes.forEach(cb => cb.checked = false);
+            
+            // Check the saved ones
+            if (config.sandboxPermissions && Array.isArray(config.sandboxPermissions)) {
+                config.sandboxPermissions.forEach(permissionValue => {
+                    const checkbox = document.querySelector(`.sandbox-options input[value="${permissionValue}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+
+            // Attempt to embed the loaded code (without confirmation for dangerous permissions on auto-load)
+            // We skip confirmation here to avoid annoying popups on every page load.
+            // Manual 'Load Config' button click could potentially re-add confirmations if desired.
+            if (config.customCode) {
+                embedCustomCode('embed-container', true); // Pass a flag to skip confirmation on auto-load
+            }
+        }
+    } catch (error) {
+        console.error("Error loading configuration from localStorage:", error);
+        localStorage.removeItem(LOCALSTORAGE_KEY); // Clear potentially corrupted data
+        // Optionally inform user
+        // alert("Failed to load saved configuration. It might have been corrupted.");
+    }
+} 

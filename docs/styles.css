@@ -692,6 +692,34 @@ body.dark-mode .warning-icon {
     color: #fcd34d;
 }
 
+/* Config Action Buttons */
+.config-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem; /* Space above the buttons */
+}
+
+.config-btn {
+    background-color: #64748b; /* Secondary/neutral color */
+    font-weight: 500;
+    padding: 0.6rem 1.5rem; /* Slightly smaller */
+}
+
+.config-btn:hover {
+    background-color: #475569;
+    filter: none;
+}
+
+body.dark-mode .config-btn {
+    background-color: #475569;
+}
+
+body.dark-mode .config-btn:hover {
+    background-color: #525b;
+    filter: none;
+}
+
 /* Placeholder Styles */
 #embed-container .placeholder-content {
     display: flex;
