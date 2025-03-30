@@ -1,6 +1,7 @@
 @import url('css/base.css');
 @import url('css/header.css');
 @import url('css/footer.css');
+@import url('css/buttons.css');
 
 /* Keep remaining styles below, after removing the moved ones */
 
@@ -79,6 +80,23 @@ main.container {
     gap: 1rem;
     justify-content: center;
     margin: 2.5rem 0 2rem 0;
+}
+
+.resize-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 0;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.config-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem; /* Space above the buttons */
 }
 
 .button {
@@ -278,30 +296,8 @@ body.dark-mode .footer-links a:focus {
         gap: 0.75rem; /* Slightly more gap when wrapped */
     }
     
-    .button {
-        flex: 1 1 calc(50% - 0.5rem);
-        min-width: 120px;
-        padding: 0.6rem 1rem; /* Adjust padding */
-        font-size: 0.95rem;
-    }
-
-    .custom-embed-btn {
-        padding: 0.6rem 1rem;
-    }
-
     .resize-controls {
         gap: 0.5rem;
-    }
-
-    .resize-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-    }
-    
-    .clear-btn {
-        margin-left: 0; /* Already handled by flex wrap */
-        flex-basis: 100%; /* Make clear button full width on mobile? Optional */
-        order: 5; /* Push clear button to the end */
     }
 
     .sandbox-controls {
@@ -396,33 +392,6 @@ body.dark-mode #embed-container:hover {
         0 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-mode .button {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
-}
-
-body.dark-mode .button:hover {
-    filter: brightness(1.15);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.2);
-}
-
-body.dark-mode .button:focus {
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-}
-
-body.dark-mode .clear-btn {
-    /* Outline style for dark mode */
-    background-color: transparent;
-    color: var(--text-color-secondary);
-    border-color: var(--border-color);
-}
-
-body.dark-mode .clear-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: var(--text-color-secondary);
-    filter: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
-
 body.dark-mode .loading {
     color: var(--text-color);
 }
@@ -441,16 +410,6 @@ body.dark-mode #custom-embed-code {
 body.dark-mode #custom-embed-code:focus {
     border-color: #60a5fa;
     background-color: rgba(30, 41, 59, 0.9);
-}
-
-.resize-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    margin-top: 0;
-    padding-bottom: 2rem;
-    margin-bottom: 2.5rem;
 }
 
 .resize-btn {
@@ -589,34 +548,6 @@ body.dark-mode .sandbox-options label.dangerous code {
 
 body.dark-mode .warning-icon {
     color: #fcd34d;
-}
-
-/* Config Action Buttons */
-.config-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem; /* Space above the buttons */
-}
-
-.config-btn {
-    background-color: #64748b; /* Secondary/neutral color */
-    font-weight: 500;
-    padding: 0.6rem 1.5rem; /* Slightly smaller */
-}
-
-.config-btn:hover {
-    background-color: #475569;
-    filter: none;
-}
-
-body.dark-mode .config-btn {
-    background-color: #475569;
-}
-
-body.dark-mode .config-btn:hover {
-    background-color: #525b;
-    filter: none;
 }
 
 /* Placeholder Styles */

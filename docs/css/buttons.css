@@ -1,0 +1,171 @@
+/* docs/css/buttons.css */
+
+/* General Button Styles */
+.button {
+    padding: 0.75rem 1.75rem;
+    color: white;
+    border: none;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, filter 0.2s ease, border-color 0.2s ease; /* Added border-color */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.08);
+    filter: brightness(1.1);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+.button:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.button i {
+    font-size: 1.1em;
+}
+
+/* Specific Button Types */
+.map-btn { background-color: #3b82f6; }
+.chart-btn { background-color: #6366f1; }
+.youtube-btn { background-color: #ef4444; }
+.toggle-mode-btn { background-color: #f59e0b; }
+.custom-embed-btn { background-color: #10b981; width: auto; padding: 0.75rem 2rem; }
+
+/* Hover Border for Action Buttons */
+.map-btn:hover,
+.chart-btn:hover,
+.youtube-btn:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Clear Button */
+.clear-btn {
+    /* Outline style */
+    background-color: var(--background-color);
+    color: var(--text-color-secondary);
+    border: 1px solid var(--border-color);
+    margin-left: auto;
+}
+
+.clear-btn:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: var(--text-color-secondary);
+    filter: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.clear-btn:active {
+    filter: brightness(0.95);
+}
+
+/* Resize Buttons */
+.resize-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    background-color: #e2e8f0; /* Lighter grey */
+    color: #334155; /* Darker text for contrast */
+    filter: none;
+}
+
+.resize-btn:hover {
+    background-color: #cbd5e1; /* Slightly darker on hover */
+    filter: none;
+}
+
+/* Config Action Buttons */
+.config-btn {
+    background-color: #64748b; /* Secondary/neutral color */
+    font-weight: 500;
+    padding: 0.6rem 1.5rem; /* Slightly smaller */
+}
+
+.config-btn:hover {
+    background-color: #475569;
+    filter: none;
+}
+
+
+/* Dark Mode Button Styles */
+body.dark-mode .button {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .button:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .button:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+body.dark-mode .clear-btn {
+    /* Outline style for dark mode */
+    background-color: transparent;
+    color: var(--text-color-secondary);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .clear-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--text-color-secondary);
+    filter: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .resize-btn {
+    background-color: #475569;
+    color: #cbd5e1;
+}
+body.dark-mode .resize-btn:hover {
+    background-color: #525b;
+}
+
+body.dark-mode .config-btn {
+    background-color: #475569;
+}
+
+body.dark-mode .config-btn:hover {
+    background-color: #525b;
+    filter: none;
+}
+
+/* Responsive Button Styles */
+@media (max-width: 640px) {
+    .button {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 120px;
+        padding: 0.6rem 1rem; /* Adjust padding */
+        font-size: 0.95rem;
+    }
+
+    .custom-embed-btn {
+        padding: 0.6rem 1rem;
+    }
+
+    .resize-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .clear-btn {
+        margin-left: 0; /* Already handled by flex wrap */
+        flex-basis: 100%; /* Make clear button full width on mobile? Optional */
+        order: 5; /* Push clear button to the end */
+    }
+} 
