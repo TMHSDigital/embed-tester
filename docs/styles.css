@@ -40,10 +40,10 @@ body {
 }
 
 header {
-    /* Animated Gradient Background */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    /* Animated Gradient Background - More Vibrant */
+    background: linear-gradient(-45deg, #5e72e4, #825ee4, #e14eca, #f5365c);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    animation: gradientBG 10s ease infinite; /* Faster animation */
 
     color: white;
     padding: 3rem 0; /* Slightly more padding */
@@ -67,13 +67,14 @@ header {
 }
 
 h1 {
-    font-size: 2.8rem; /* Slightly larger */
-    font-weight: 700; /* Slightly less bold than 800 */
-    margin: 0 0 0.75rem 0; /* Increase bottom margin */
+    font-family: 'Poppins', sans-serif; /* Use Poppins */
+    font-size: 3.2rem; /* Make it a bit bigger */
+    font-weight: 800; /* Bolder Poppins weight */
+    margin: 0 0 0.75rem 0;
     padding: 0;
     text-align: center;
-    letter-spacing: -0.03em;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    letter-spacing: -0.04em; /* Slightly tighter spacing */
+    text-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Stronger shadow */
 }
 
 .subtitle {
