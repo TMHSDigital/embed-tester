@@ -212,14 +212,20 @@ main.container {
 }
 
 .clear-btn { 
-    background-color: #94a3b8;
-    color: #1e293b;
-    margin-left: 1rem;
-    border-color: #cbd5e1;
+    /* Outline style */
+    background-color: var(--background-color);
+    color: var(--text-color-secondary);
+    border: 1px solid var(--border-color);
+    margin-left: auto; 
 }
+
 .clear-btn:hover {
-    filter: brightness(1.05);
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: var(--text-color-secondary);
+    filter: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
+
 .clear-btn:active {
     filter: brightness(0.95);
 }
@@ -441,9 +447,17 @@ body.dark-mode .button:focus {
 }
 
 body.dark-mode .clear-btn {
-    background-color: #475569;
-    color: #e2e8f0;
-    border-color: #64748b;
+    /* Outline style for dark mode */
+    background-color: transparent;
+    color: var(--text-color-secondary);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .clear-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--text-color-secondary);
+    filter: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 body.dark-mode .loading {
@@ -479,24 +493,22 @@ body.dark-mode #custom-embed-code:focus {
 .resize-btn {
     padding: 0.5rem 1.25rem;
     font-size: 0.9rem;
-    background-color: #64748b;
-    color: white;
+    background-color: #e2e8f0; /* Lighter grey */
+    color: #334155; /* Darker text for contrast */
     filter: none;
 }
 
 .resize-btn:hover {
-    background-color: #475569;
+    background-color: #cbd5e1; /* Slightly darker on hover */
     filter: none;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 body.dark-mode .resize-btn {
-    background-color: #475569;
+    background-color: #475569; /* Keep existing dark */
     color: #cbd5e1;
 }
 body.dark-mode .resize-btn:hover {
-    background-color: #52525b;
+    background-color: #525b; /* Keep existing dark hover */
 }
 
 .sandbox-controls {
@@ -510,7 +522,7 @@ body.dark-mode .resize-btn:hover {
 }
 
 .sandbox-title {
-    margin: 0 0 1.25rem 0;
+    margin: 0 0 1.75rem 0; /* Increased bottom margin */
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-color);
@@ -541,6 +553,12 @@ body.dark-mode .resize-btn:hover {
     height: 1.1em;
 }
 
+/* Add focus style for accessibility */
+.sandbox-options input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
 .sandbox-options code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     font-size: 0.9rem;
@@ -555,16 +573,16 @@ body.dark-mode .resize-btn:hover {
     padding-top: 0.5rem;
     border-top: 1px dashed var(--border-color);
     grid-column: 1 / -1;
-    background-color: rgba(254, 242, 242, 0.6);
+    background-color: #fef2f2; /* Lighter red background */
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     border-radius: 6px;
 }
 
 .sandbox-options label.dangerous code {
-    color: #b91c1c;
-    background-color: rgba(220, 38, 38, 0.08);
-    border-color: rgba(220, 38, 38, 0.1);
+    color: #c2410c; /* Slightly less harsh red text */
+    background-color: #fff7ed; /* Light orange/red background */
+    border-color: #fed7aa; /* Lighter border */
 }
 
 .warning-icon {
@@ -596,14 +614,14 @@ body.dark-mode .sandbox-options code {
 }
 
 body.dark-mode .sandbox-options label.dangerous {
-    background-color: rgba(127, 29, 29, 0.3);
+    background-color: rgba(153, 27, 27, 0.3); /* Dark red background adjust */
     border-top-color: var(--border-color);
 }
 
 body.dark-mode .sandbox-options label.dangerous code {
-    color: #fca5a5;
-    background-color: rgba(248, 113, 113, 0.1);
-    border-color: rgba(248, 113, 113, 0.2);
+    color: #fda4af; /* Lighter red text */
+    background-color: rgba(251, 113, 113, 0.15); /* Adjust background */
+    border-color: rgba(251, 113, 113, 0.25); /* Adjust border */
 }
 
 body.dark-mode .warning-icon {
