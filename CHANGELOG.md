@@ -38,6 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Style: Implement various visual improvements (border-radius, spacing, shadows, button styles).
 - Style: Restyle 'Clear' button as secondary/outline button.
 - Style: Refine styling for 'dangerous' sandbox options.
+- Refactor: Split header and footer styles from `styles.css` into `css/header.css` and `css/footer.css`.
+- Refactor: Created `css/base.css` for root variables, body, and container styles.
 
 ### Fixed
 - Fixed placeholder GitHub link in the footer of `

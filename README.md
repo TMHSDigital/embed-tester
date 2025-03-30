@@ -46,3 +46,23 @@
 
 2. **Open in browser**
    ```
+
+## Project Structure
+
+The website files are located in the `docs` folder for GitHub Pages compatibility:
+
+```
+docs/
+├── index.html      # Main HTML file
+├── styles.css      # Main CSS file (imports others)
+├── embed.js        # Core JavaScript functionality
+├── API.md          # JavaScript API documentation
+├── css/            # Subdirectory for modular CSS files
+│   ├── base.css
+│   ├── header.css
+│   └── footer.css
+│   └── ... (other components)
+└── ... (other assets like images if added)
+```
+
+## Usage Guide
