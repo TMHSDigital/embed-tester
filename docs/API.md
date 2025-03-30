@@ -2,7 +2,12 @@
 
 This document provides detailed information about the JavaScript functions in `embed.js` that power the Embed-Tester application.
 
-**Note on CSS:** As of recent updates, the CSS has been refactored into modular files within the `docs/css/` directory (e.g., `base.css`, `header.css`, `footer.css`). The main `docs/styles.css` file now primarily uses `@import` rules to include these modules.
+**Note on CSS:** The CSS has been refactored into modular files in `docs/css/`:
+- `base.css`: Root variables, body and container styles
+- `header.css`: Header component styles
+- `footer.css`: Footer component styles
+- `buttons.css`: Button and control styles
+The main `docs/styles.css` uses `@import` to include these files.
 
 ## Table of Contents
 

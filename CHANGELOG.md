@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Style: Refine styling for 'dangerous' sandbox options.
 - Refactor: Split header and footer styles from `styles.css` into `css/header.css` and `css/footer.css`.
 - Refactor: Created `css/base.css` for root variables, body, and container styles.
+- Refactor: Extract button and control styles into `css/buttons.css`
 
 ### Fixed
 - Fixed placeholder GitHub link in the footer of `
