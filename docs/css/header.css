@@ -1,71 +1,56 @@
 /* docs/css/header.css */
 
 header {
-    /* Animated Gradient Background - More Vibrant */
-    background: linear-gradient(-45deg, #5e72e4, #825ee4, #e14eca, #f5365c);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite; /* Faster animation */
+    /* Simpler Gradient Background */
+    background: linear-gradient(100deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    /* Remove animation */
+    /* background-size: 400% 400%; */
+    /* animation: gradientBG 10s ease infinite; */
 
     color: white;
-    padding: 3rem 0; /* Slightly more padding */
-    margin-bottom: 3rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 2.5rem 0; /* Adjusted padding */
+    margin-bottom: 2.5rem; /* Adjusted margin */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
     text-align: center; /* Center content */
 }
 
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
+/* Remove gradient keyframes */
+/* @keyframes gradientBG { ... } */
 
 h1 {
-    font-family: 'Poppins', sans-serif; /* Use Poppins */
-    font-size: 3.2rem; /* Make it a bit bigger */
-    font-weight: 800; /* Bolder Poppins weight */
-    margin: 0 0 0.75rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8rem; /* Slightly adjusted size */
+    font-weight: 700; /* Keep bold */
+    margin: 0 0 0.5rem 0; /* Adjusted margin */
     padding: 0;
     text-align: center;
-    letter-spacing: -0.04em; /* Slightly tighter spacing */
-    text-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Stronger shadow */
+    letter-spacing: -0.02em; /* Adjusted spacing */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow */
 }
 
 .subtitle {
     text-align: center;
-    color: rgba(255,255,255,0.95);
-    font-size: 1.1rem; /* Slightly larger */
-    max-width: 600px; /* Constrain width */
-    margin: 0 auto; /* Center constrained subtitle */
-    letter-spacing: 0.01em;
-    text-transform: none; /* Ensure normal case */
-    font-weight: 400; /* Regular weight */
-    line-height: 1.5; /* Adjust line height */
+    color: rgba(255,255,255,0.9);
+    font-size: 1.05rem; /* Adjusted size */
+    max-width: 550px;
+    margin: 0 auto;
+    letter-spacing: normal;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
-/* Dark Mode Header */
+/* Dark Mode Header (Inherits background) */
 body.dark-mode header {
-    /* Background animation is inherited */
-    color: white;
-}
-
-body.dark-mode header h1,
-body.dark-mode header .subtitle {
-    /* Explicitly set white again if needed, though inherited usually works */
     color: white;
 }
 
 /* Responsive Header */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.6rem;
+        font-size: 2.4rem;
     }
     .subtitle {
         font-size: 1rem;
@@ -79,10 +64,10 @@ body.dark-mode header .subtitle {
         margin-bottom: 2rem;
     }
     h1 {
-        font-size: 2.2rem; /* Further reduce h1 size */
-        letter-spacing: -0.03em;
+        font-size: 2rem;
+        letter-spacing: -0.01em;
     }
     .subtitle {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 } 

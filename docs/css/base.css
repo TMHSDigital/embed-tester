@@ -1,34 +1,40 @@
 /* docs/css/base.css */
 
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --background-color: #f8fafc;
-    --text-color: #1e293b;
-    --text-color-secondary: #64748b; /* Added for clarity */
-    --border-color: #e2e8f0;
+    --primary-color: #4f46e5; /* Indigo */
+    --secondary-color: #1d4ed8; /* Darker blue */
+    --accent-color: #ec4899; /* Pink for accents? */
+    --background-color: #ffffff;
+    --text-color: #111827; /* Darker gray */
+    --text-color-secondary: #6b7280; /* Medium gray */
+    --border-color: #e5e7eb; /* Lighter gray */
+    --surface-color: #ffffff; /* Explicit surface color */
+    --surface-muted-color: #f9fafb; /* Slightly off-white surface */
 }
 
-/* Default Dark Mode Variables (can be overridden by body.dark-mode) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #0f172a;
-        --text-color: #f8fafc;
-        --text-color-secondary: #94a3b8; /* Added for clarity */
-        --border-color: #334155;
-    }
+/* Default Dark Mode Variables (applied via body.dark-mode) */
+body.dark-mode {
+    --primary-color: #6366f1; /* Brighter indigo for dark */
+    --secondary-color: #3b82f6; /* Brighter blue for dark */
+    --accent-color: #f472b6; /* Brighter pink */
+    --background-color: #111827; /* Dark gray */
+    --text-color: #f9fafb; /* Off-white */
+    --text-color-secondary: #9ca3af; /* Lighter gray */
+    --border-color: #374151; /* Medium dark gray */
+    --surface-color: #1f2937; /* Slightly lighter dark gray */
+    --surface-muted-color: #1f2937; /* Same as surface for now */
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.7;
+    line-height: 1.6;
     background-color: var(--background-color);
     background-attachment: fixed;
     color: var(--text-color);
     min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .container {
@@ -40,20 +46,6 @@ body {
 main.container {
     padding-top: 1rem;
     padding-bottom: 3rem;
-}
-
-/* General Dark Mode Body */
-body.dark-mode {
-    /* :root variables are automatically updated via JS toggle potentially,
-       but setting explicit base overrides here can be a fallback.
-       However, relying on the :root swap is cleaner.
-       We'll keep dark mode overrides specific to components for now. */
-    /* Example: body.dark-mode { background-color: #0f172a; color: #f8fafc; } */
-    /* Let's ensure variables are correctly assigned */
-    --background-color: #0f172a;
-    --text-color: #f8fafc;
-    --text-color-secondary: #94a3b8;
-    --border-color: #334155;
 }
 
 /* General Keyframes */
