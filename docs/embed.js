@@ -13,13 +13,15 @@ function embedElement(type, containerId) {
         return;
     }
     
-    // Clear previous content
+    // Clear previous content and show loading immediately
     container.innerHTML = '<div class="loading">Loading embed...</div>';
     
     const element = document.createElement('iframe');
     element.classList.add('embedded-iframe');
     element.setAttribute('loading', 'lazy');
     
+    let isLoading = true; // Flag to track loading state
+
     try {
         switch (type) {
             case 'map':
@@ -35,30 +37,34 @@ function embedElement(type, containerId) {
                 element.setAttribute('sandbox', 'allow-scripts allow-popups allow-presentation allow-forms');
                 break;
             default:
+                isLoading = false; // Not loading if type is invalid
                 handleEmbedError({ type: 'DEFAULT', message: 'Unsupported embed type' }, containerId);
                 return;
         }
         
-        element.onerror = (error) => handleEmbedError({ type: 'LOAD_ERROR', originalError: error }, containerId);
-        element.onload = () => {
-            container.innerHTML = '';
-            container.appendChild(element);
-        };
-        
-        // Set timeout for loading
+        // Set timeout for loading - clearer logic
         const timeout = setTimeout(() => {
-            if (container.querySelector('.loading')) {
+            if (isLoading) { // Only trigger timeout if still loading
                 handleEmbedError({ type: 'NETWORK_ERROR', message: 'Loading timeout' }, containerId);
+                isLoading = false; // Stop considering it loading
             }
-        }, 10000); // 10 second timeout
+        }, 15000); // Increased timeout to 15s
         
-        // Clear timeout on successful load
         element.onload = () => {
+            if (!isLoading) return; // Ignore if timeout already happened or error occurred
             clearTimeout(timeout);
-            container.innerHTML = '';
+            isLoading = false;
+            container.innerHTML = ''; // Clear loading indicator
             container.appendChild(element);
         };
         
+        element.onerror = (error) => {
+            if (!isLoading) return; // Ignore if timeout already happened
+            clearTimeout(timeout);
+            isLoading = false;
+            handleEmbedError({ type: 'LOAD_ERROR', originalError: error }, containerId);
+        };
+
     } catch (error) {
         handleEmbedError({ type: 'DEFAULT', originalError: error }, containerId);
     }
