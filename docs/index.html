@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Add Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; script-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; frame-src 'self' https://www.google.com https://plotly.com https://www.youtube.com; img-src 'self' https: data:; object-src 'none'; base-uri 'self'; form-action 'self';">
+    <!-- Update Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+        script-src 'self';
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+        frame-src 'self' https://www.google.com https://plotly.com https://www.youtube.com;
+        img-src 'self' https: data:;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        connect-src 'self';
+        worker-src 'none';
+        manifest-src 'self';
+        media-src 'self';
+        prefetch-src 'self';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Embed Tester - Test Your Embeddable Elements</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Preload FontAwesome but don't apply it immediately -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <script src="embed.js" defer></script>
 </head>
 <body>
@@ -33,19 +49,19 @@
             </div>
 
             <div class="controls">
-                <button class="button map-btn">
+                <button class="button map-btn" data-shortcut="Ctrl+M">
                     <i class="fas fa-map-marker-alt"></i> Map
                 </button>
                 <button class="button chart-btn">
                     <i class="fas fa-chart-line"></i> Chart
                 </button>
-                <button class="button youtube-btn">
+                <button class="button youtube-btn" data-shortcut="Ctrl+Y">
                     <i class="fab fa-youtube"></i> YouTube
                 </button>
-                <button class="button clear-btn">
+                <button class="button clear-btn" data-shortcut="Ctrl+C">
                     <i class="fas fa-times"></i> Clear
                 </button>
-                <button class="button toggle-mode-btn" aria-label="Toggle dark mode">
+                <button class="button toggle-mode-btn" data-shortcut="Ctrl+T" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i> Theme
                 </button>
             </div>
@@ -71,7 +87,10 @@
                 
                 <!-- Add Sandbox Controls -->
                 <div class="sandbox-controls">
-                    <h4 class="sandbox-title">Sandbox Permissions:</h4>
+                    <h4 class="sandbox-title">
+                        Sandbox Permissions:
+                        <i class="fas fa-question-circle help-icon" data-help-topic="sandbox" aria-label="Help about sandbox permissions"></i>
+                    </h4>
                     <div class="sandbox-options">
                         <label>
                             <input type="checkbox" name="sandbox" value="allow-scripts" checked>
@@ -97,11 +116,13 @@
                             <input type="checkbox" name="sandbox" value="allow-same-origin">
                             <code>allow-same-origin</code> 
                             <i class="fas fa-exclamation-triangle warning-icon" title="DANGER: Allows embed to access parent page resources (cookies, DOM). Only use if absolutely necessary and you trust the source."></i>
+                            <i class="fas fa-question-circle help-icon" data-help-topic="allow-same-origin" aria-label="Help about allow-same-origin"></i>
                         </label>
                         <label class="dangerous">
                             <input type="checkbox" name="sandbox" value="allow-top-navigation">
                             <code>allow-top-navigation</code>
                              <i class="fas fa-exclamation-triangle warning-icon" title="DANGER: Allows embed to navigate the top-level page (redirect). Only use if absolutely necessary and you trust the source."></i>
+                            <i class="fas fa-question-circle help-icon" data-help-topic="allow-top-navigation" aria-label="Help about allow-top-navigation"></i>
                         </label>
                     </div>
                 </div>
@@ -116,9 +137,18 @@
                     </button>
                 </div>
 
-                <button class="button custom-embed-btn">
-                    <i class="fas fa-code"></i> Embed Custom Code
-                </button>
+                <div id="preview-container" class="preview-box" style="display: none;" aria-live="polite">
+                    <!-- Preview content will be injected here -->
+                </div>
+
+                <div class="custom-embed-actions">
+                    <button id="preview-btn" class="button preview-btn">
+                        <i class="fas fa-eye"></i> Preview Code
+                    </button>
+                    <button class="button custom-embed-btn" data-shortcut="Ctrl+E">
+                        <i class="fas fa-code"></i> Embed Custom Code
+                    </button>
+                </div>
             </div>
         </section>
     </main>

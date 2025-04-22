@@ -41,25 +41,32 @@
 
 - **Predefined Embeds:** Quickly test common embeds like Google Maps, Plotly Charts (example), and YouTube videos.
 - **Custom Code Input:** Paste your own HTML embed code into a textarea for testing.
+- **Code Preview:** Safely preview the structure of your custom HTML code before embedding.
 - **Responsive Testing:** Resize the embed container instantly to common device widths (Mobile, Tablet, Desktop) or fit it to the available space.
 - **Configurable Sandbox:** Dynamically adjust the `sandbox` attribute permissions for the custom embed iframe using checkboxes. Dangerous permissions (`allow-same-origin`, `allow-top-navigation`) trigger user confirmation dialogs.
 - **Dark Mode:** Toggle between light and dark themes, with preference saved to `localStorage`.
 - **Save/Load Configuration:** Save your custom embed code and selected sandbox permissions to `localStorage` and automatically load them on your next visit. Use the "Save Config" and "Load Config" buttons.
 - **Clean UI:** Modern interface with clear controls and improved error/placeholder feedback.
-- **Security Conscious:** Uses `srcdoc` for custom code, dynamically configured `sandbox` attributes, and a Content Security Policy (CSP) meta tag.
+- **Security Conscious:** Uses `srcdoc` for custom code, dynamically configured `sandbox` attributes, confirmation dialogs, and a Content Security Policy (CSP) meta tag.
+- **Accessibility Aware:** Includes keyboard navigation shortcuts (e.g., Ctrl+E to Embed), visible focus indicators, and ARIA attributes.
+- **Help System:** Minimalistic tooltips provide context for sandbox permissions on click/hover.
+- **Optimized:** Includes performance enhancements like debounced resizing and lazy-loaded icons.
 
 <div align="center">
   <h2 style="font-size: 2.2rem; margin-top: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #ff9a9e 0%, #fad0c4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Quick Start</h2>
 </div>
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/TMHSDigital/embed-tester.git
-   cd embed-tester
-   ```
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/TMHSDigital/embed-tester.git
+    cd embed-tester
+    ```
 
-2. **Open in browser**
-   ```
+2.  **Open in browser**
+    Simply open the `docs/index.html` file in your web browser. No build step or local server is required.
+
+3.  **Or visit the Live Demo:** [https://tmhsdigital.github.io/embed-tester](https://tmhsdigital.github.io/embed-tester)
+
 
 <div align="center">
   <h2 style="font-size: 2.2rem; margin-top: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Project Structure</h2>
@@ -75,9 +82,19 @@ docs/
 └── css/            # CSS modules
     ├── base.css    # Root variables, body, containers
     ├── header.css  # Header styles
-    ├── footer.css  # Footer styles  
+    ├── footer.css  # Footer styles
     └── buttons.css # Button and control styles
 ```
 
 ## Usage Guide
+
+1.  **Select Embed Type:** Click the "Map", "Chart", or "YouTube" buttons to load predefined examples.
+2.  **Use Custom Code:** Paste your own HTML embed code into the large textarea.
+3.  **Configure Sandbox (for Custom Code):** Check/uncheck the desired sandbox permissions below the textarea. Use the help icons (?) for more information about each permission. Be cautious with dangerous permissions (highlighted).
+4.  **Preview (for Custom Code):** Click the "Preview Code" button to see a static render of your HTML structure before embedding.
+5.  **Embed Custom Code:** Click the "Embed Custom Code" button. You may be prompted for confirmation if dangerous permissions are selected.
+6.  **Test Responsiveness:** Use the "Mobile", "Tablet", "Desktop", and "Fit Container" buttons to resize the preview area.
+7.  **Manage Configuration:** Use "Save Config" to store your custom code and sandbox settings in your browser's local storage for your next visit. "Load Config" manually reloads the last saved configuration.
+8.  **Toggle Theme:** Use the "Theme" button to switch between light and dark modes.
+9.  **Clear:** Use the "Clear" button to remove the current embed and reset the preview area.
 
