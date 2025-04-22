@@ -23,49 +23,65 @@ function embedElement(type, containerId) {
     let isLoading = true; // Flag to track loading state
 
     try {
+        // Add the iframe to the DOM first (hidden)
+        element.style.display = 'none';
+        container.appendChild(element);
+
+        // Configure sandbox and src based on type
         switch (type) {
             case 'map':
-                element.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25987701089373!3d40.69766998831435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1614118575811!5m2!1sen!2sus';
                 element.setAttribute('sandbox', 'allow-scripts');
+                element.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25987701089373!3d40.69766998831435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1614118575811!5m2!1sen!2sus';
                 break;
             case 'chart':
-                element.src = 'https://plotly.com/~chris/1638.embed';
                 element.setAttribute('sandbox', 'allow-scripts allow-popups');
+                element.src = 'https://plotly.com/~chris/1638.embed';
                 break;
             case 'youtube':
-                element.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
                 element.setAttribute('sandbox', 'allow-scripts allow-popups allow-presentation allow-forms');
+                element.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
                 break;
             default:
-                isLoading = false; // Not loading if type is invalid
+                element.remove(); // Clean up the hidden iframe
+                isLoading = false;
                 handleEmbedError({ type: 'DEFAULT', message: 'Unsupported embed type' }, containerId);
                 return;
         }
         
-        // Set timeout for loading - clearer logic
+        // Set timeout for loading
         const timeout = setTimeout(() => {
-            if (isLoading) { // Only trigger timeout if still loading
+            if (isLoading) {
+                element.remove(); // Clean up the hidden iframe
                 handleEmbedError({ type: 'NETWORK_ERROR', message: 'Loading timeout' }, containerId);
-                isLoading = false; // Stop considering it loading
+                isLoading = false;
             }
-        }, 15000); // Increased timeout to 15s
+        }, 15000);
         
         element.onload = () => {
-            if (!isLoading) return; // Ignore if timeout already happened or error occurred
+            if (!isLoading) {
+                element.remove(); // Clean up if we're no longer in loading state
+                return;
+            }
             clearTimeout(timeout);
             isLoading = false;
-            container.innerHTML = ''; // Clear loading indicator
-            container.appendChild(element);
+            container.innerHTML = ''; // Clear loading message
+            container.appendChild(element); // Move iframe to final position
+            element.style.display = ''; // Show the iframe
         };
         
         element.onerror = (error) => {
-            if (!isLoading) return; // Ignore if timeout already happened
+            if (!isLoading) return;
             clearTimeout(timeout);
             isLoading = false;
+            element.remove(); // Clean up the hidden iframe
             handleEmbedError({ type: 'LOAD_ERROR', originalError: error }, containerId);
         };
 
     } catch (error) {
+        if (element.parentNode) {
+            element.remove(); // Clean up the iframe if it was added
+        }
+        isLoading = false;
         handleEmbedError({ type: 'DEFAULT', originalError: error }, containerId);
     }
 }
